@@ -341,3 +341,36 @@ const bookShelf = {
 // //^ getTotalPrice - это метод объекта atTheOldToad,
 // //^ который вычисляет и возвращает общую стоимость всех зелий в массиве potions.
 // //^ Используется цикл for...of, чтобы пройти по каждому зелью и сложить цены.
+// //?============================================================================================================================
+
+//^ ============== Зміна об'єкта в масиві ============================================================================
+
+//  Об'єкт atTheOldToad має наступні властивості:
+// potions — масив об'єктів зілль
+// getPotions() — метод, який повертає значення властивості potions
+// updatePotionName() — метод, який приймає два параметра рядків oldName і newName
+// Доповни метод updatePotionName(oldName, newName) таким чином,
+// щоб він оновлював назву зілля з oldName на newName в масиві зілля у властивості potions.
+
+// const atTheOldToad = {
+//   potions: [
+//     { name: "Speed potion", price: 460 },
+//     { name: "Stone skin", price: 520 },
+//   ],
+//   getPotions() {
+//     return this.potions;
+//   },
+//   updatePotionName(oldName, newName) {
+//     for (const potion of this.potions) {
+//       if (potion.name === oldName) {
+//         potion.name = newName;
+//       }
+//     }
+//   },
+// };
+
+// Після першого виклику методу atTheOldToad.updatePotionName("Stone skin", "Invisibility"),
+// у властивості potions буде масив[{ name: "Speed potion", price: 460 }, { name: "Invisibility", price: 520 }]
+// Після другого виклику методу atTheOldToad.updatePotionName("Speed potion", "Polymorth"),
+// у властивості potions буде масив[{ name: "Polymorth", price: 460 }, { name: "Invisibility", price: 520 }]
+//?============================================================================================================================
