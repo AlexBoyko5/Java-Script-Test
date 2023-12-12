@@ -36,12 +36,12 @@
 
 // //*const bookShelf = {
 //     //^Здесь создается (ОБЪЕКТ) с именем bookShelf.
-//     //^Он содержит СВОЙСТВА(в данном случае books) и 
+//     //^Он содержит СВОЙСТВА(в данном случае books) и
 //     //^МЕТОДЫ (в данном случае getBooks и addBook).
 // //*books: ["The Last Kingdom"],
 //     //^Массив книг:
-//     //^Внутри объекта bookShelf есть свойство books, 
-//     //^которое представляет собой массив книг. 
+//     //^Внутри объекта bookShelf есть свойство books,
+//     //^которое представляет собой массив книг.
 //     //^В данном случае, массив начинается с книги "The Last Kingdom".
 // //*getBooks() {
 //         //^ getBooks - это метод объекта bookShelf,
@@ -54,7 +54,7 @@
 //         //^Таким образом, этот метод предназначен для добавления новых книг на полку.
 // //*this.books.push(bookName);
 // //*     }
-// //*}; 
+// //*};
 // //^Добавление книг на полку:
 // //^Здесь вызываются методы addBook для добавления
 // //^ двух новых книг("The Mist" и "Dream Guardian") на полку.
@@ -62,8 +62,8 @@
 // //*bookShelf.addBook("Dream Guardian");
 // //*console.log(bookShelf.getBooks());
 
-function foo(...args) {
-    console.log(args);
-}
-foo("a", "b");
-console.log(foo);
+// function foo(...args) {
+//     console.log(args);
+// }
+// foo("a", "b");
+// console.log(foo);

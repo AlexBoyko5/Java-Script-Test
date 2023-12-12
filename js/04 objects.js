@@ -14,22 +14,22 @@
 // };
 
 // Приклади
-const propertyName = 'dynamicProperty';
-const obj1 = {
-  [propertyName]: 'Значення для динамічної властивості',
-};
+// const propertyName = 'dynamicProperty';
+// const obj1 = {
+//   [propertyName]: 'Значення для динамічної властивості',
+// };
 
-console.log(obj1.dynamicProperty); // Виведе: Значення для динамічної властивості
+// console.log(obj1.dynamicProperty); // Виведе: Значення для динамічної властивості
 
-// Використання функції для обчислення імені методу
-const methodName = 'dynamicMethod';
-const obj2 = {
-  [methodName + 'WithSuffix']() {
-    console.log('Виклик динамічного методу');
-  },
-};
+// // Використання функції для обчислення імені методу
+// const methodName = 'dynamicMethod';
+// const obj2 = {
+//   [methodName + 'WithSuffix']() {
+//     console.log('Виклик динамічного методу');
+//   },
+// };
 
-obj2.dynamicMethodWithSuffix(); // Виведе: Виклик динамічного методу
+// obj2.dynamicMethodWithSuffix(); // Виведе: Виклик динамічного методу
 
 //^ ================================================================================================================
 
@@ -39,51 +39,51 @@ obj2.dynamicMethodWithSuffix(); // Виведе: Виклик динамічно
 //Перебери об'єкт apartment, використовуючи метод Object.keys() і цикл for...of.
 //Запиши у змінну keys масив ключів властивостей об'єкта apartment,і додай в масив values всі значення його властивостей.
 
-const apartment = {
-  descr: "Spacious apartment in the city center",
-  rating: 4,
-  price: 2153,
-};
-const values = [];
-/*Використовуємо Object.keys() для отримання масиву ключів властивостей об'єкта*/
-const keys = Object.keys(apartment);
-/*Цикл for...of для перебору масиву ключів*/
-for (const key of keys) {
-  /*Додаємо значення кожної властивості до масиву values*/
-  values.push(apartment[key]);
-}
+// const apartment = {
+//   descr: "Spacious apartment in the city center",
+//   rating: 4,
+//   price: 2153,
+// };
+// const values = [];
+// /*Використовуємо Object.keys() для отримання масиву ключів властивостей об'єкта*/
+// const keys = Object.keys(apartment);
+// /*Цикл for...of для перебору масиву ключів*/
+// for (const key of keys) {
+//   /*Додаємо значення кожної властивості до масиву values*/
+//   values.push(apartment[key]);
+// }
 //^ ===============================================
 //Виконай рефакторинг функції countProps(object), замінивши перебір ключів за допомогою циклу for…in на метод Object.keys()
 //для отримання масиву властивостей.
 //Функція має повернути кількість властивостей в об'єкті object.
 
-function countProps(object) {
-  let propCount = 0;
+// function countProps(object) {
+//   let propCount = 0;
 
-  for (const key in object) {
-    if (object.hasOwnProperty(key)) {
-      propCount += 1;
-    }
-  }
-  return propCount;
-}
+//   for (const key in object) {
+//     if (object.hasOwnProperty(key)) {
+//       propCount += 1;
+//     }
+//   }
+//   return propCount;
+// }
 
-// РЕШЕНИЕ !
-function countProps(object) {
-  const keys = Object.keys(object);
-  return keys.length;
-}
+// // РЕШЕНИЕ !
+// function countProps(object) {
+//   const keys = Object.keys(object);
+//   return keys.length;
+// }
 //^ ============================================
 //Запиши у змінну keys масив ключів властивостей об'єкта apartment, а у змінну values - масив їх значень.
 //Використовуй методи Object.keys() і Object.values().
-const apartment = {
-  descr: "Spacious apartment in the city center",
-  rating: 4,
-  price: 2153,
-};
+// const apartment = {
+//   descr: "Spacious apartment in the city center",
+//   rating: 4,
+//   price: 2153,
+// };
 
-const keys = Object.keys(apartment);;
-const values = Object.values(apartment);
+// const keys = Object.keys(apartment);;
+// const values = Object.values(apartment);
 //^ ==============================================
 
 //!=======================  Object.values()  ==============================================================================
@@ -97,14 +97,14 @@ const values = Object.values(apartment);
 //Пройдись по отриманих значеннях за допомогою циклу та додай кожне значення до змінної totalSalary.
 //Поверни totalSalary як результат
 
-function countTotalSalary(salaries) {
-  let totalSalary = 0;
-  const values = Object.values(salaries);
-  for (const salary of values) {
-    totalSalary += salary;
-  }
-  return totalSalary;
-}
+// function countTotalSalary(salaries) {
+//   let totalSalary = 0;
+//   const values = Object.values(salaries);
+//   for (const salary of values) {
+//     totalSalary += salary;
+//   }
+//   return totalSalary;
+// }
 //! 1 - Ініціалізація змінної totalSalary: Спочатку ми створюємо змінну totalSalary і присвоюємо їй значення 0.
 //Ця змінна буде відповідати за загальну суму зарплат усіх співробітників.
 
@@ -133,15 +133,15 @@ function countTotalSalary(salaries) {
 //Перебери масив об'єктів colors, використовуючи цикл for...of.
 //Додай у масив hexColors значення властивостей hex, а в масив rgbColors - значення властивостей rgb з усіх об'єктів масиву colors.
 
-const colors = [
-  { hex: "#f44336", rgb: "244,67,54" },
-  { hex: "#2196f3", rgb: "33,150,243" },
-  { hex: "#4caf50", rgb: "76,175,80" },
-  { hex: "#ffeb3b", rgb: "255,235,59" },
-];
+// const colors = [
+//   { hex: "#f44336", rgb: "244,67,54" },
+//   { hex: "#2196f3", rgb: "33,150,243" },
+//   { hex: "#4caf50", rgb: "76,175,80" },
+//   { hex: "#ffeb3b", rgb: "255,235,59" },
+// ];
 
-const hexColors = [];
-const rgbColors = [];
+// const hexColors = [];
+// const rgbColors = [];
 
 // Перебір масиву об'єктів colors за допомогою циклу for...of/
 //Щоб заповнити масиви hexColors і rgbColors значеннями кольорів з масиву colors,
@@ -149,12 +149,6 @@ const rgbColors = [];
 //Цей код пройде крізь кожен об'єкт у масиві colors, витягне значення hex та rgb і додасть їх до відповідних масивів hexColors та rgbColors.
 //Результатом буде вивід двох масивів, які містять значення кольорів у форматах HEX та RGB.
 
-for (const color of colors) {
-  // Додавання значень до відповідних масивів
-  hexColors.push(color.hex);
-  // Додавання значення властивості до масиву rgbColors
-  rgbColors.push(color.rgb);
-}
 //^ =================================================
 
 // Функція getProductPrice(productName) приймає один параметр productName - назва продукту.
@@ -162,33 +156,33 @@ for (const color of colors) {
 // Доповни код функції так, щоб вона шукала об'єкт продукту з певним ім'ям (властивість name) в масиві products і повертала його ціну (властивість price).
 // Якщо продукт з такою назвою не знайдений, функція повинна повертати null.
 
-function getProductPrice(productName) {
-  const products = [
-    { name: "Radar", price: 1300, quantity: 4 },
-    { name: "Scanner", price: 2700, quantity: 3 },
-    { name: "Droid", price: 400, quantity: 7 },
-    { name: "Grip", price: 1200, quantity: 9 },
-  ];
-  //* Цей код перебирає масив products та порівнює ім'я кожного продукту з вказаним productName.
+// function getProductPrice(productName) {
+//   const products = [
+//     { name: "Radar", price: 1300, quantity: 4 },
+//     { name: "Scanner", price: 2700, quantity: 3 },
+//     { name: "Droid", price: 400, quantity: 7 },
+//     { name: "Grip", price: 1200, quantity: 9 },
+// ];
+//* Цей код перебирає масив products та порівнює ім'я кожного продукту з вказаним productName.
 
-  for (const product of products) {
-    //* Порівнюємо ім'я продукту
-    //* product.name и product.price - это свойства объекта (product), который является элементом массива (products).
-    //* product.name - это свойство объекта product, которое содержит имя продукта,
-    //* а product.price - это свойство объекта product, которое содержит цену продукта
-    //* при переборі масиву (products) кожний (product) є об'єктом, який містить властивості (name, price, quantity).
-    //* За допомогою виразу (product.name) ви отримуєте значення властивості (name) для конкретного продукту =>
-    //^ => (в умові завдання, що вище)...так, щоб вона (функція) шукала об'єкт продукту з певним ім'ям\властивістю (властивість name) в масиві (products)
-    //* аналогічно для product.price.
+// for (const product of products) {
+//* Порівнюємо ім'я продукту
+//* product.name и product.price - это свойства объекта (product), который является элементом массива (products).
+//* product.name - это свойство объекта product, которое содержит имя продукта,
+//* а product.price - это свойство объекта product, которое содержит цену продукта
+//* при переборі масиву (products) кожний (product) є об'єктом, який містить властивості (name, price, quantity).
+//* За допомогою виразу (product.name) ви отримуєте значення властивості (name) для конкретного продукту =>
+//^ => (в умові завдання, що вище)...так, щоб вона (функція) шукала об'єкт продукту з певним ім'ям\властивістю (властивість name) в масиві (products)
+//* аналогічно для product.price.
 
-    if (product.name === productName) {
-      //* Якщо ім'я співпадає, повертаємо ціну продукту
-      return product.price;
-    }
-  }
-  //* Якщо не знайдено продукт із вказаним ім'ям, повертаємо null
-  return null;
-}
+//   if (product.name === productName) {
+//     //* Якщо ім'я співпадає, повертаємо ціну продукту
+//     return product.price;
+//   }
+// }
+// //* Якщо не знайдено продукт із вказаним ім'ям, повертаємо null
+// return null;
+// }
 //! ======================================= Метод об’єктів ================================
 
 //^ ============== Зміна за посиланням ===================================
@@ -233,25 +227,25 @@ function getProductPrice(productName) {
 // //*bookShelf.addBook("Dream Guardian");
 // //*console.log(bookShelf.getBooks());
 
-const atTheOldToad = {
-  potions: ["Speed potion", "Stone skin"],
-  getPotions() {
-    return this.potions;
-  },
-  addPotion(potionName) {
-    this.potions.push(potionName);
-  },
-};
-//^ ========================================
-const bookShelf = {
-  books: [
-    { title: "The Last Kingdom", rating: 8 },
-    { title: "The Mist", rating: 6 }
-  ],
-  getBooks() {
-    return this.books;
-  }
-};
+// const atTheOldToad = {
+//   potions: ["Speed potion", "Stone skin"],
+//   getPotions() {
+//     return this.potions;
+//   },
+//   addPotion(potionName) {
+//     this.potions.push(potionName);
+//   },
+// };
+// //^ ========================================
+// const bookShelf = {
+//   books: [
+//     { title: "The Last Kingdom", rating: 8 },
+//     { title: "The Mist", rating: 6 }
+//   ],
+//   getBooks() {
+//     return this.books;
+//   }
+// };
 
 //% Объявление объекта:
 //  const bookShelf = {
@@ -478,3 +472,103 @@ const bookShelf = {
 
 // const bestScore = Math.max(...allScores);
 // const worstScore = Math.min(...allScores);
+
+//! ============== ПЕРЕБИРАЮЧІ МЕТОДИ МАСИВІВ  =======================================================================
+//^ ============== Колбек-функції =============================================================================
+
+//? ============== Функція як значення ==========================================================================
+// Функція makePizza повертає рядок з повідомленням клієнту.
+// Доповни код таким чином, щоб у змінній result був результат виконання функції makePizza,
+// а у змінній pointer було посилання на функцію makePizza.
+
+// function makePizza() {
+//   return "Your pizza is being prepared, please wait.";
+// }
+
+// const result = makePizza();
+// const pointer = makePizza;
+//? =============//? =============//? =============//? =============//? =============//? =============
+
+function greet(name) {
+  console.log(`Welcome ${name}!`);
+}
+
+function notify(name) {
+  console.log(`Dear ${name}, your room will be ready in 30 minutes`);
+}
+
+function registerGuest(name, callback) {
+  console.log(`Registering ${name}!`);
+  callback(greet);
+}
+registerGuest("Mango", greet);
+// registerGuest("Mango", notify);
+
+// Параметр (name) является общим для всех трех функций. При вызове, внутри функции registerGuest,
+//  параметра callback(name); вместо(name) будут подставлены его значения из функций greet и notify,
+// т.е. (`Welcome ${name}!`).....
+// В зависимости от того, какая функция обратного вызова была передана в качестве аргумента callback,
+//  вместо (name) будут подставлены соответствующие значения из функций greet или notify.
+// Таким образом, если функция greet была передана в качестве аргумента callback,
+// то в консоль будет выведено сообщение приветствия, а если функция notify - то сообщение уведомления.
+// почему не пишут например callback(greet); или может callback(notify); ведь это та же функция ?
+// если вы передадите функцию greet в качестве аргумента callback, вместо (name) то в консоль будет выведено
+//  структура (тело) функции (`Welcome ${name}!`), а не его значение ("Welcome Mango!")
+//  а если функцию notify - структура (тело) функции notify.
+
+//? =============//? =============//? =============//? =============//? =============//? =============
+// Функція makeMessage приймає один параметр - ім'я піци, що доставляється,(pizzaName) 
+// та повертає рядок з повідомленням клієнту.
+// Доповни функцію makeMessage таким чином, щоб вона очікувала другим параметром(параметр callback) колбек - функцію і
+// повертала результат її виклику.
+// Функції deliverPizza або makePizza будуть передаватися як колбек для makeMessage і
+//  очікувати аргументом ім'я готової піци, що доставляється.
+
+function deliverPizza(pizzaName) {
+  return `Delivering ${pizzaName} pizza.`;
+}
+
+function makePizza(pizzaName) {
+  return `Pizza ${pizzaName} is being prepared, please wait...`;
+}
+
+function makeMessage(pizzaName, callback) {// Виклик колбек-функції, передача їй ім'я піци як аргумент
+  const message = callback(pizzaName)
+  return message;
+}
+Вариант 2
+
+function deliverPizza(pizzaName) {
+  return `Delivering ${pizzaName} pizza.`;
+}
+function makePizza(pizzaName) {
+  return `Pizza ${pizzaName} is being prepared, please wait...`;
+}
+function makeMessage(pizzaName, callback) {
+  return callback(pizzaName);
+}
+//? =============//? =============//? =============//? =============//? =============//? =============
+
+//^ ============== Інлайн - колбеки ================================================================================
+
+// Функція makePizza має два параметри: pizzaName - ім'я піци та callback - колбек-функцію.
+// Під час виконання, makePizza викликає цей колбек, передаючи йому pizzaName як аргумент.
+// Доповни другий виклик функції makePizza(pizzaName, callback), передавши другим аргументом
+// інлайн колбек - функцію eatPizza(pizzaName).Колбек eatPizza логує рядок "Eating pizza <назва піци>",
+// де < назва піци > це значення параметра pizzaName.
+
+function makePizza(pizzaName, callback) {
+  console.log(`Pizza ${pizzaName} is being prepared, please wait...`);
+  callback(pizzaName);
+}
+
+makePizza("Royal Grand", function deliverPizza(pizzaName) {
+  console.log(`Delivering pizza ${pizzaName}`);
+});
+
+makePizza("Ultracheese", function eatPizza(pizzaName) {
+  console.log(`eatPizza ${pizzaName}`);
+});
+//? =============//? =============//? =============//? =============//? =============//? =============
+
+//^ ============== Метод forEach(callback) =================================================================
