@@ -473,7 +473,6 @@
 // const bestScore = Math.max(...allScores);
 // const worstScore = Math.min(...allScores);
 
-<<<<<<< Updated upstream
 //! ============== ПЕРЕБИРАЮЧІ МЕТОДИ МАСИВІВ  =======================================================================
 //^ ============== Колбек-функції =============================================================================
 
@@ -490,19 +489,7 @@
 // const pointer = makePizza;
 //? =============//? =============//? =============//? =============//? =============//? =============
 
-function greet(name) {
-  console.log(`Welcome ${name}!`);
-}
 
-function notify(name) {
-  console.log(`Dear ${name}, your room will be ready in 30 minutes`);
-}
-
-function registerGuest(name, callback) {
-  console.log(`Registering ${name}!`);
-  callback(greet);
-}
-registerGuest("Mango", greet);
 // registerGuest("Mango", notify);
 
 // Параметр (name) является общим для всех трех функций. При вызове, внутри функции registerGuest,
@@ -518,36 +505,36 @@ registerGuest("Mango", greet);
 //  а если функцию notify - структура (тело) функции notify.
 
 //? =============//? =============//? =============//? =============//? =============//? =============
-// Функція makeMessage приймає один параметр - ім'я піци, що доставляється,(pizzaName) 
+// Функція makeMessage приймає один параметр - ім'я піци, що доставляється,(pizzaName)
 // та повертає рядок з повідомленням клієнту.
 // Доповни функцію makeMessage таким чином, щоб вона очікувала другим параметром(параметр callback) колбек - функцію і
 // повертала результат її виклику.
 // Функції deliverPizza або makePizza будуть передаватися як колбек для makeMessage і
 //  очікувати аргументом ім'я готової піци, що доставляється.
 
-function deliverPizza(pizzaName) {
-  return `Delivering ${pizzaName} pizza.`;
-}
+// function deliverPizza(pizzaName) {
+//   return `Delivering ${pizzaName} pizza.`;
+// }
 
-function makePizza(pizzaName) {
-  return `Pizza ${pizzaName} is being prepared, please wait...`;
-}
+// function makePizza(pizzaName) {
+//   return `Pizza ${pizzaName} is being prepared, please wait...`;
+// }
 
-function makeMessage(pizzaName, callback) {// Виклик колбек-функції, передача їй ім'я піци як аргумент
-  const message = callback(pizzaName)
-  return message;
-}
-Вариант 2
+// function makeMessage(pizzaName, callback) {// Виклик колбек-функції, передача їй ім'я піци як аргумент
+//   const message = callback(pizzaName)
+//   return message;
+// }
+// Вариант 2
 
-function deliverPizza(pizzaName) {
-  return `Delivering ${pizzaName} pizza.`;
-}
-function makePizza(pizzaName) {
-  return `Pizza ${pizzaName} is being prepared, please wait...`;
-}
-function makeMessage(pizzaName, callback) {
-  return callback(pizzaName);
-}
+// function deliverPizza(pizzaName) {
+//   return `Delivering ${pizzaName} pizza.`;
+// }
+// function makePizza(pizzaName) {
+//   return `Pizza ${pizzaName} is being prepared, please wait...`;
+// }
+// function makeMessage(pizzaName, callback) {
+//   return callback(pizzaName);
+// }
 //? =============//? =============//? =============//? =============//? =============//? =============
 
 //^ ============== Інлайн - колбеки ================================================================================
@@ -558,18 +545,46 @@ function makeMessage(pizzaName, callback) {
 // інлайн колбек - функцію eatPizza(pizzaName).Колбек eatPizza логує рядок "Eating pizza <назва піци>",
 // де < назва піци > це значення параметра pizzaName.
 
-function makePizza(pizzaName, callback) {
-  console.log(`Pizza ${pizzaName} is being prepared, please wait...`);
-  callback(pizzaName);
-}
+// function makePizza(pizzaName, callback) {
+//   console.log(`Pizza ${pizzaName} is being prepared, please wait...`);
+//   callback(pizzaName);
+// }
 
-makePizza("Royal Grand", function deliverPizza(pizzaName) {
-  console.log(`Delivering pizza ${pizzaName}`);
-});
+// makePizza("Royal Grand", function deliverPizza(pizzaName) {
+//   console.log(`Delivering pizza ${pizzaName}`);
+// });
 
-makePizza("Ultracheese", function eatPizza(pizzaName) {
-  console.log(`eatPizza ${pizzaName}`);
-});
+// makePizza("Ultracheese", function eatPizza(pizzaName) {
+//   console.log(`eatPizza ${pizzaName}`);
+// });
 //? =============//? =============//? =============//? =============//? =============//? =============
 
 //^ ============== Метод forEach(callback) =================================================================
+//Метод forEach(callback) — це метод перебирання масиву,
+//який використовується для заміни циклів for і for...of в роботі з колекцією.
+
+// const numbers = [5, 10, 15, 20, 25];
+
+// // Класичний for
+// for (let i = 0; i < numbers.length; i += 1) {
+//   console.log(`Index ${i}, value ${numbers[i]}`);
+
+//   Index ${ i }: Это вставка значения переменной i в строку.
+//   При каждой итерации цикла, ПЕРЕМЕННАЯ(i) принимает текущее ЗНАЧЕНИЕ ИНДЕКСА(порядкового номера) ЭЛЕМЕНТА  массива.
+//   Value ${ numbers[i] }: Здесь вставляется ЗНАЧЕНИЕ ЭЛЕМЕНТА массива numbers с индексом i.
+
+// Функція calculateTotalPrice(orderedItems) приймає один параметр orderedItems - масив чисел,
+// і розраховує загальну суму його елементів, яка зберігається у змінній totalPrice 
+// і повертається як результат роботи функції.Доповни виклик метода forEach,
+// передавши йому колбек - функцію, яка на кожній ітерації додає до totalPrice значення поточного елемента масива orderedItems.
+
+function calculateTotalPrice(orderedItems) {
+    let totalPrice = 0;
+
+    orderedItems.forEach(function (item) {
+        totalPrice += item;
+    });
+
+    return totalPrice;
+}
+//? =============//? =============//? =============//? =============//? =============//? ===========
