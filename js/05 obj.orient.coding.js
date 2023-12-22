@@ -48,11 +48,19 @@
 //         return `Order accepted, preparing «${pizzaName}» pizza`;
 //     },
 // };
-const user = {
-    username: "Victor",
-    showName() {
-        // ✅ Віктор біжить швидко, тому що він (this) намагається зловити поїзд.
-        console.log(this.username);
-    },
-};
-user.showName();
+// const user = {
+//     username: "Victor",
+//     showName() {
+//         // ✅ Віктор біжить швидко, тому що він (this) намагається зловити поїзд.
+//         console.log(this.username);
+//     },
+// };
+// user.showName();
+class User {
+    constructor(name, email) {
+        console.log(name, email);
+    }
+}
+
+const mango = new User("Mango", "mango@mail.com");
+console.log(mango);
