@@ -403,3 +403,24 @@ const allUsers = [
 console.log(getTotalBalanceByGender(allUsers, "male")); // 12053
 
 console.log(getTotalBalanceByGender(allUsers, "female")); // 8863
+
+
+//!==================//!==================//!==================//!==================//!==================//!==================
+Д / З от ментора
+
+/*Напишіть функцію checkBrackets(str) яка приймає рядок жс коду (someFn)
+  і перевіряє правильність закриття дужок () {} []
+  Якщо рядок містить коректний код функція повертає true.
+  В іншому випадку повертає false
+*/
+
+const someFn = `function foo() {
+  const arr = [1, 2, 3];
+  console.log(arr);
+}`;
+
+function checkBrackets(someFn) {
+
+}
+
+console.log(checkBrackets(someFn));
