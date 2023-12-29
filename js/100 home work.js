@@ -560,3 +560,145 @@ console.log(getShippingCost("Sweden")); // "Sorry, there is no delivery to your 
 // }
 
 // console.log(checkBrackets(someFn));
+
+//~ ========================  Д/З БЛОК#5 ===============================================================================================
+
+//!====================== TASK#1 =============================
+// Перед звільненням розробник зламав вихідний код управління акаунтами
+// користувачів нашого сервісу доставки їжі.Виконай рефакторинг методів об'єкта customer,
+// розставивши відсутні this під час звернення до властивостей об'єкта.
+
+const customer = {
+  username: "Mango",
+  balance: 24000,
+  discount: 0.1,
+  orders: ["Burger", "Pizza", "Salad"],
+
+  // Change code below this line
+  getBalance() {
+    return this.balance;
+  },
+  getDiscount() {
+    return this.discount;
+  },
+  setDiscount(value) {
+    this.discount = value;
+  },
+  getOrders() {
+    return this.orders;
+  },
+  addOrder(cost, order) {
+    this.balance -= cost - cost * this.discount;
+    this.orders.push(order);
+  },
+  // Change code above this line
+};
+
+customer.setDiscount(0.15);
+console.log(customer.getDiscount()); // 0.15
+customer.addOrder(5000, "Steak");
+console.log(customer.getBalance()); // 19750
+console.log(customer.getOrders()); // ["Burger", "Pizza", "Salad", "Steak"]
+
+//!====================== TASK#2 =============================
+// Створи клас Storage, який створюватиме об'єкти для управління складом товарів.
+// Клас очікує лише один аргумент — початковий масив товарів, який записується до створеного
+// об'єкта в приватну властивість items.
+// Оголоси наступні методи класу:
+// getItems() — повертає масив поточних товарів у приватній властивості items.
+// addItem(newItem) — приймає новий товар newItem і додає його до масиву товарів у приватну властивість items об'єкта.
+// removeItem(itemToRemove) — приймає рядок з назвою товару itemToRemove і видаляє його з масиву товарів
+// у приватній властивості items об'єкта.
+// Візьми код нижче з ініціалізацією екземпляра й викликами методів і
+// встав його після оголошення класу для перевірки коректності роботи.
+// У консоль будуть виведені результати їх роботи.
+
+class storageObj {
+  constructor(items) {     // Конструктор класу, який приймає початковий масив товарів
+    this.items = items;  // Записуємо початковий масив в приватну властивість items
+  }
+
+  getItems() { // Метод для отримання поточного масиву товарів
+    return this.items;
+  }
+  addItem(newItem) { // Метод для додавання нового товару до масиву
+    this.items.push(newItem);
+  }
+  removeItem(itemToRemove) { // Метод для видалення товару за назвою з масиву
+    this.items = this.items.filter(item => !item.includes(itemToRemove));
+    // Використовуємо метод filter для створення нового масиву без товару, який треба видалити
+  }
+}
+
+const storage = new storageObj(["Nanitoids", "Prolonger", "Antigravitator"]);
+console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator"]
+storage.addItem("Droid");
+console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator", "Droid"]
+storage.removeItem("Prolonger");
+console.log(storage.getItems()); // ["Nanitoids", "Antigravitator", "Droid"]
+
+// Вариант 2
+
+// class Storage {
+//     constructor(items) {
+//         this.items = items;
+//     }
+
+//     getItems() {
+//         return this.items;
+//     }
+
+//     addItem(newItem) {
+//         this.items.push(newItem);
+//     }
+
+//     removeItem(itemToRemove) {
+//         const itemIndex = this.items.indexOf(itemToRemove);
+//         if (itemIndex !== -1) {
+//             this.items.splice(itemIndex, 1);
+//         }
+//     }
+// }
+
+//!====================== TASK#3 =============================
+// Напиши клас StringBuilder, який приймає один параметр initialValue — довільний рядок,
+// який записується у приватну властивість value об'єкта, що створюється.
+// Оголоси наступні методи класу:
+
+// getValue() — повертає поточне значення приватної властивості value.
+// padEnd(str) — отримує параметр str(рядок) і додає його в кінець значення приватної
+// властивості value об'єкта, який викликає цей метод.
+// padStart(str) — отримує параметр str(рядок) і додає його на початок значення приватної
+// властивості value об'єкта, який викликає цей метод.
+// padBoth(str) — отримує параметр str(рядок) і додає його на початок і в кінець значення
+// приватної властивості  value об'єкта, який викликає цей метод.
+// Візьми код нижче з ініціалізацією екземпляра й викликами методів і встав його після
+//  оголошення класу для перевірки коректності роботи.
+
+class StringBuilder {
+  #value;
+  constructor(initialValue) {// Конструктор класу, приймає початкове значення initialValue
+    this.#value = initialValue;// Записуємо початкове значення у приватну властивість value
+  }
+  getValue() { // Метод для отримання поточного значення
+    return this.#value;
+  }
+  padEnd(str) {// Метод для додавання рядка на кінець поточного значення
+    this.#value += str;
+  }
+  padStart(str) { // Метод для додавання рядка на початок поточного значенн
+    this.#value += str + this.#value;
+  }
+  padBoth(str) {   // Метод для додавання рядка на початок і кінець поточного значення
+    this.#value += str + this.#value + str;
+  }
+}
+
+const builder = new StringBuilder(".");
+console.log(builder.getValue()); // "."
+builder.padStart("^");
+console.log(builder.getValue()); // "^."
+builder.padEnd("^");
+console.log(builder.getValue()); // "^.^"
+builder.padBoth("=");
+console.log(builder.getValue()); // "=^.^="
