@@ -561,7 +561,7 @@ console.log(getShippingCost("Sweden")); // "Sorry, there is no delivery to your 
 
 // console.log(checkBrackets(someFn));
 
-//~ ========================  Д/З БЛОК#5 ===============================================================================================
+//~ ========================  Д/З БЛОК#6 ===============================================================================================
 
 //!====================== TASK#1 =============================
 // Перед звільненням розробник зламав вихідний код управління акаунтами
@@ -637,28 +637,27 @@ console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator",
 storage.removeItem("Prolonger");
 console.log(storage.getItems()); // ["Nanitoids", "Antigravitator", "Droid"]
 
-// Вариант 2
 
-// class Storage {
-//     constructor(items) {
-//         this.items = items;
-//     }
+// Исправление #2
+class Storage {
+  #items;                    // приватна властивість, що зберігає масив товарів
+  constructor(items) {      // конструктор класу, очікує масив товарів як єдиний аргумент
+    this.#items = items;   // записує масив товарів до приватної властивості #items
+  }
 
-//     getItems() {
-//         return this.items;
-//     }
+  getItems() {     // метод, що повертає масив поточних товарів у приватній властивості #items
+    return this.#items;
+  }
 
-//     addItem(newItem) {
-//         this.items.push(newItem);
-//     }
+  addItem(newItem) {  // метод, що додає новий товар newItem до масиву товарів у приватну властивість #items об'єкта   
+    this.#items.push(newItem);
+  }
 
-//     removeItem(itemToRemove) {
-//         const itemIndex = this.items.indexOf(itemToRemove);
-//         if (itemIndex !== -1) {
-//             this.items.splice(itemIndex, 1);
-//         }
-//     }
-// }
+  removeItem(itemToRemove) {   // метод, що видаляє товар itemToRemove з масиву товарів у приватній властивості #items об'єкта
+    this.#items = this.#items.filter(item => item !== itemToRemove);
+  }
+
+}
 
 //!====================== TASK#3 =============================
 // Напиши клас StringBuilder, який приймає один параметр initialValue — довільний рядок,
@@ -675,6 +674,7 @@ console.log(storage.getItems()); // ["Nanitoids", "Antigravitator", "Droid"]
 // Візьми код нижче з ініціалізацією екземпляра й викликами методів і встав його після
 //  оголошення класу для перевірки коректності роботи.
 
+// Не принятое решение
 class StringBuilder {
   #value;
   constructor(initialValue) {// Конструктор класу, приймає початкове значення initialValue
@@ -694,6 +694,46 @@ class StringBuilder {
   }
 }
 
+// Исправление #2
+// class StringBuilder {
+//   #value;
+//   constructor(startValue) {
+//     this.#value = startValue;
+//   }
+//   getValue() {
+//     return this.#value;
+//   }
+//   padEnd(str) {
+//     this.#value += str;
+//   }
+//   padStart(str) {
+//     this.#value = str + this.#value;
+//   }
+//   padBoth(str) {
+//     this.#value = str + this.#value + str;
+//   }
+// }
+
+// class StringBuilder {
+//   #value; // приватна властивість, що зберігає рядок
+//   constructor(initialValue) { // конструктор класу, очікує рядок initialValue як єдиний аргумент
+//     this.#value = initialValue; // записує рядок initialValue до приватної властивості #value
+//   }
+//   getValue() { // метод, що повертає поточний рядок у приватній властивості #value
+//     return this.#value;
+//   }
+//   padEnd(str) { // метод, що додає рядок str в кінець рядка у приватній властивості #value об'єкта, який викликає цей метод
+//     this.#value += str;
+//   }
+//   padStart(str) { // метод, що додає рядок str на початок рядка у приватній властивості #value об'єкта, який викликає цей метод
+//     this.#value = str + this.#value;
+//   }
+//   padBoth(str) { // метод, що додає рядок str на початок і в кінець рядка у приватній властивості #value об'єкта, який викликає цей метод
+//     this.#value = str + this.#value + str;
+//   }
+// }
+
+
 const builder = new StringBuilder(".");
 console.log(builder.getValue()); // "."
 builder.padStart("^");
@@ -702,3 +742,10 @@ builder.padEnd("^");
 console.log(builder.getValue()); // "^.^"
 builder.padBoth("=");
 console.log(builder.getValue()); // "=^.^="
+
+// Доброго времени суток!
+// Спасибо за обратную связь!
+// Удалил репозиторий полностью и создал новый.
+//Task2: items сделал частной(#items);   в removeItem вместо includes использовал(!==);
+//Task3: constructor(initialValue) поменял на constructor(startValue);  value частная(#value);   padStart исправил на - { this.#value = str + this.#value; };
+//padBoth  исправил на - { this.#value = str + this.#value + str; }  
