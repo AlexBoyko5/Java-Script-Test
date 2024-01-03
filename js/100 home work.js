@@ -58,80 +58,143 @@
 
 
 //~ ========================  Д/З Розгалуження і ЦИКЛИ  ==================================================================
+
 //!====================== TASK#1 =============================
-Станція з продажу ремонтних дроїдів готова до запуску, залишилося написати програмне забезпечення для відділу продажів.Оголоси функцію makeTransaction(quantity, pricePerDroid, customerCredits), яка складає та повертає повідомлення про купівлю ремонтних дроїдів.
+// Станція з продажу ремонтних дроїдів готова до запуску, залишилося написати програмне забезпечення для відділу продажів.
+// Оголоси функцію makeTransaction(quantity, pricePerDroid, customerCredits), яка складає та повертає повідомлення
+// про купівлю ремонтних дроїдів.
+// Вона оголошує три параметри, значення яких будуть задаватися під час її виклику:
 
-Вона оголошує три параметри, значення яких будуть задаватися під час її виклику:
+// quantity — кількість замовлених дроїдів
+// pricePerDroid — ціна одного дроїда
+// customerCredits — сума коштів на рахунку клієнта
+// Доповни функцію таким чином:
 
-quantity — кількість замовлених дроїдів
-pricePerDroid — ціна одного дроїда
-customerCredits — сума коштів на рахунку клієнта
-Доповни функцію таким чином:
+// Оголоси змінну для зберігання загальної суми замовлення(загальна вартість усіх замовлених дроїдів) і
+// задай їй вираз розрахунку цієї суми.
+// Додай перевірку, чи зможе клієнт оплатити замовлення:
+// якщо сума до сплати перевищує кількість кредитів на рахунку клієнта, функція має повертати рядок "Insufficient funds!"
+// в іншому випадку функція має повертати рядок "You ordered <quantity> droids worth <totalPrice> credits!",
+//  де < quantity > це кількість замовлених дроїдів, а < totalPrice > це їх загальна вартість.
+// Візьми код нижче і встав після оголошення своєї функції для перевірки коректності її роботи.
+// У консоль будуть виведені результати її роботи.
 
-Оголоси змінну для зберігання загальної суми замовлення(загальна вартість усіх замовлених дроїдів) і задай їй вираз розрахунку цієї суми.
-Додай перевірку, чи зможе клієнт оплатити замовлення:
-якщо сума до сплати перевищує кількість кредитів на рахунку клієнта, функція має повертати рядок "Insufficient funds!"
-в іншому випадку функція має повертати рядок "You ordered <quantity> droids worth <totalPrice> credits!", де < quantity > це кількість замовлених дроїдів, а < totalPrice > це їх загальна вартість.
-Візьми код нижче і встав після оголошення своєї функції для перевірки коректності її роботи.У консоль будуть виведені результати її роботи.
+// function makeTransaction(quantity, pricePerDroid, customerCredits) {
+//   let totalPrice = quantity * pricePerDroid;  /*Розрахунок загальної вартості замовлення */
+//   if (totalPrice > customerCredits) {        /*Перевірка, чи може клієнт оплатити замовлення */
+//     return "Insufficient funds!";
+//   } else {
+//     return `You ordered ${quantity} droids worth ${totalPrice} credits!`;
+//   }
+// }
 
-  console.log(makeTransaction(5, 3000, 23000)); // "You ordered 5 droids worth 15000 credits!"
-console.log(makeTransaction(3, 1000, 15000)); // "You ordered 3 droids worth 3000 credits!"
-console.log(makeTransaction(10, 5000, 8000)); // "Insufficient funds!"
-console.log(makeTransaction(8, 2000, 10000)); // "Insufficient funds!"
-console.log(makeTransaction(10, 500, 5000)); // "You ordered 10 droids worth 5000 credits!"
+// console.log(makeTransaction(5, 3000, 23000)); // "You ordered 5 droids worth 15000 credits!"
+// console.log(makeTransaction(3, 1000, 15000)); // "You ordered 3 droids worth 3000 credits!"
+// console.log(makeTransaction(10, 5000, 8000)); // "Insufficient funds!"
+// console.log(makeTransaction(8, 2000, 10000)); // "Insufficient funds!"
+// console.log(makeTransaction(10, 500, 5000)); // "You ordered 10 droids worth 5000 credits!"
+
 //!====================== TASK#2 =============================
-Оголоси функцію formatMessage(message, maxLength), яка приймає рядок(параметр message) та перевіряє його довжину відповідно до заданої максимальної довжини(параметр maxLength).
+// Оголоси функцію formatMessage(message, maxLength), яка приймає рядок(параметр message)
+//та перевіряє його довжину відповідно до заданої максимальної довжини(параметр maxLength).
+// Доповни код функції таким чином, щоб:
 
-Доповни код функції таким чином, що:
+// Якщо довжина рядка дорівнює або менша за maxLength, то функція повертає початковий рядок без змін.
+// Якщо довжина перевищує maxLength, то функція обрізає рядок до maxLength символів, додає трикрапку "..."
+//в кінці та повертає обрізану версію.
+// Візьми код нижче і встав після оголошення своєї функції для перевірки коректності її роботи.
+//У консоль будуть виведені результати її роботи.
 
-Якщо довжина рядка дорівнює або менша за maxLength, то функція повертає початковий рядок без змін.
-Якщо довжина перевищує maxLength, то функція обрізає рядок до maxLength символів, додає трикрапку "..." в кінці та повертає обрізану версію.
-Візьми код нижче і встав після оголошення своєї функції для перевірки коректності її роботи.У консоль будуть виведені результати її роботи.
+// function formatMessage(message, maxLength) {
+//   if (message.length <= maxLength) {
+//     return message;
 
-  console.log(formatMessage("Curabitur ligula sapien", 16)); // "Curabitur ligula..."
-console.log(formatMessage("Curabitur ligula sapien", 23)); // "Curabitur ligula sapien"
-console.log(formatMessage("Vestibulum facilisis purus nec", 20)); // "Vestibulum facilisis..."
-console.log(formatMessage("Vestibulum facilisis purus nec", 30)); // "Vestibulum facilisis purus nec"
-console.log(formatMessage("Nunc sed turpis a felis in nunc fringilla", 15)); // "Nunc sed turpis..."
-console.log(formatMessage("Nunc sed turpis a felis in nunc fringilla", 41)); // "Nunc sed turpis a felis in nunc fringilla"
+//   } else {
+//     return message.slice(0, maxLength) + "...";
+//   }
+// }
+
+// console.log(formatMessage("Curabitur ligula sapien", 16)); // "Curabitur ligula..."
+// console.log(formatMessage("Curabitur ligula sapien", 23)); // "Curabitur ligula sapien"
+// console.log(formatMessage("Vestibulum facilisis purus nec", 20)); // "Vestibulum facilisis..."
+// console.log(formatMessage("Vestibulum facilisis purus nec", 30)); // "Vestibulum facilisis purus nec"
+// console.log(formatMessage("Nunc sed turpis a felis in nunc fringilla", 15)); // "Nunc sed turpis..."
+// console.log(formatMessage("Nunc sed turpis a felis in nunc fringilla", 41)); // "Nunc sed turpis a felis in nunc fringilla"
 
 //!====================== TASK#3 =============================
-Функція checkForSpam(message) приймає рядок(параметр message), перевіряє його на вміст заборонених слів spam і sale, і повертає результат перевірки.Слова в рядку параметра message можуть бути в довільному регістрі, наприклад SPAM або sAlE.
+// Функція checkForSpam(message) приймає рядок(параметр message), перевіряє його на вміст заборонених слів spam і sale,
+//і повертає результат перевірки.
+//Слова в рядку параметра message можуть бути в довільному регістрі, наприклад SPAM або sAlE.
+// Доповни код функції таким чином, що:
 
-Доповни код функції таким чином, що:
+// Якщо знайдено заборонене слово(spam або sale), то функція повертає буль true
+// Якщо в рядку відсутні заборонені слова, функція повертає буль false
+// Візьми код нижче і встав після оголошення своєї функції для перевірки коректності її роботи.
+//У консоль будуть виведені результати її роботи.
 
-Якщо знайдено заборонене слово(spam або sale), то функція повертає буль true
-Якщо в рядку відсутні заборонені слова, функція повертає буль false
-Візьми код нижче і встав після оголошення своєї функції для перевірки коректності її роботи.У консоль будуть виведені результати її роботи.
+// function checkForSpam(message) {
+//   const lowercaseMessage = message.toLowerCase() //* Перетворюємо рядок на нижній регістр для порівняння однакових/приведених значень/
+//   //* Перевіряємо наявність заборонених слів у рядку/
+//   if (lowercaseMessage.includes("spam") || lowercaseMessage.includes("sale")) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// }
 
-  console.log(checkForSpam("Latest technology news")); // false
-console.log(checkForSpam("JavaScript weekly newsletter")); // false
-console.log(checkForSpam("Get best sale offers now!")); // true
-console.log(checkForSpam("Amazing SalE, only tonight!")); // true
-console.log(checkForSpam("Trust me, this is not a spam message")); // true
-console.log(checkForSpam("Get rid of sPaM emails. Our book in on sale!")); // true
-console.log(checkForSpam("[SPAM] How to earn fast money?")); // true
+// console.log(checkForSpam("Latest technology news")); // false
+// console.log(checkForSpam("JavaScript weekly newsletter")); // false
+// console.log(checkForSpam("Get best sale offers now!")); // true
+// console.log(checkForSpam("Amazing SalE, only tonight!")); // true
+// console.log(checkForSpam("Trust me, this is not a spam message")); // true
+// console.log(checkForSpam("Get rid of sPaM emails. Our book in on sale!")); // true
+// console.log(checkForSpam("[SPAM] How to earn fast money?")); // true
+
 //!====================== TASK#4 =============================
-Оголоси функцію getShippingCost(country), яка повинна перевіряти можливість доставки товару в країну користувача(параметр country) і повертати повідомлення про результат.Обов'язково використовуй інструкцію switch.
+// Оголоси функцію getShippingCost(country), яка повинна перевіряти можливість доставки товару
+//в країну користувача(параметр country) і повертати повідомлення про результат.
+//Обов'язково використовуй інструкцію switch.
+// Формат рядка, що повертається "Shipping to <country> will cost <price> credits",
+//де замість < country > і < price > необхідно підставити відповідні значення.
+// Список країн і вартість доставки:
 
-Формат рядка, що повертається "Shipping to <country> will cost <price> credits", де замість < country > і < price > необхідно підставити відповідні значення.
+// China — 100 кредитів
+// Chile — 250 кредитів
+// Australia — 170 кредитів
+// Jamaica — 120 кредитів
+// Зі списку видно, що доставка можлива не скрізь.Якщо зазначена країна відсутня у списку,
+//то функція повинна повернути рядок "Sorry, there is no delivery to your country".
+// Візьми код нижче і встав після оголошення своєї функції для перевірки коректності її роботи.
+//У консоль будуть виведені результати її роботи.
 
-Список країн і вартість доставки:
+// function getShippingCost(country) {
+//   switch (country) {
+//     case "China":
+//       price = "Shipping to China will cost 100 credits";
+//       break;
+//     case "Chile":
+//       price = "Shipping to Chile will cost 250 credits";
+//       break;
+//     case "Australia":
+//       price = "Shipping to Australia will cost 170 credits";
+//       break;
+//     case "Jamaica":
+//       price = "Shipping to Jamaica will cost 120 credits";
+//       break;
 
-China — 100 кредитів
-Chile — 250 кредитів
-Australia — 170 кредитів
-Jamaica — 120 кредитів
-Зі списку видно, що доставка можлива не скрізь.Якщо зазначена країна відсутня у списку, то функція повинна повернути рядок "Sorry, there is no delivery to your country".
+//     default:
+//       price = "Sorry, there is no delivery to your country";
+//       break;
+//   }
+//   return price;
+// }
 
-Візьми код нижче і встав після оголошення своєї функції для перевірки коректності її роботи.У консоль будуть виведені результати її роботи.
-
-  console.log(getShippingCost("Australia")); // "Shipping to Australia will cost 170 credits"
-console.log(getShippingCost("Germany")); // "Sorry, there is no delivery to your country"
-console.log(getShippingCost("China")); // "Shipping to China will cost 100 credits"
-console.log(getShippingCost("Chile")); // "Shipping to Chile will cost 250 credits"
-console.log(getShippingCost("Jamaica")); // "Shipping to Jamaica will cost 120 credits"
-console.log(getShippingCost("Sweden")); // "Sorry, there is no delivery to your country"
+// console.log(getShippingCost("Australia")); // "Shipping to Australia will cost 170 credits"
+// console.log(getShippingCost("Germany")); // "Sorry, there is no delivery to your country"
+// console.log(getShippingCost("China")); // "Shipping to China will cost 100 credits"
+// console.log(getShippingCost("Chile")); // "Shipping to Chile will cost 250 credits"
+// console.log(getShippingCost("Jamaica")); // "Shipping to Jamaica will cost 120 credits"
+// console.log(getShippingCost("Sweden")); // "Sorry, there is no delivery to your country"
 
 //~ ========================  Д/З
 //!====================== TASK#1 =============================
@@ -568,37 +631,37 @@ console.log(getShippingCost("Sweden")); // "Sorry, there is no delivery to your 
 // користувачів нашого сервісу доставки їжі.Виконай рефакторинг методів об'єкта customer,
 // розставивши відсутні this під час звернення до властивостей об'єкта.
 
-const customer = {
-  username: "Mango",
-  balance: 24000,
-  discount: 0.1,
-  orders: ["Burger", "Pizza", "Salad"],
+// const customer = {
+//   username: "Mango",
+//   balance: 24000,
+//   discount: 0.1,
+//   orders: ["Burger", "Pizza", "Salad"],
 
-  // Change code below this line
-  getBalance() {
-    return this.balance;
-  },
-  getDiscount() {
-    return this.discount;
-  },
-  setDiscount(value) {
-    this.discount = value;
-  },
-  getOrders() {
-    return this.orders;
-  },
-  addOrder(cost, order) {
-    this.balance -= cost - cost * this.discount;
-    this.orders.push(order);
-  },
-  // Change code above this line
-};
+//   // Change code below this line
+//   getBalance() {
+//     return this.balance;
+//   },
+//   getDiscount() {
+//     return this.discount;
+//   },
+//   setDiscount(value) {
+//     this.discount = value;
+//   },
+//   getOrders() {
+//     return this.orders;
+//   },
+//   addOrder(cost, order) {
+//     this.balance -= cost - cost * this.discount;
+//     this.orders.push(order);
+//   },
+//   // Change code above this line
+// };
 
-customer.setDiscount(0.15);
-console.log(customer.getDiscount()); // 0.15
-customer.addOrder(5000, "Steak");
-console.log(customer.getBalance()); // 19750
-console.log(customer.getOrders()); // ["Burger", "Pizza", "Salad", "Steak"]
+// customer.setDiscount(0.15);
+// console.log(customer.getDiscount()); // 0.15
+// customer.addOrder(5000, "Steak");
+// console.log(customer.getBalance()); // 19750
+// console.log(customer.getOrders()); // ["Burger", "Pizza", "Salad", "Steak"]
 
 //!====================== TASK#2 =============================
 // Створи клас Storage, який створюватиме об'єкти для управління складом товарів.
@@ -613,51 +676,51 @@ console.log(customer.getOrders()); // ["Burger", "Pizza", "Salad", "Steak"]
 // встав його після оголошення класу для перевірки коректності роботи.
 // У консоль будуть виведені результати їх роботи.
 
-class storageObj {
-  constructor(items) {     // Конструктор класу, який приймає початковий масив товарів
-    this.items = items;  // Записуємо початковий масив в приватну властивість items
-  }
+// class storageObj {
+//   constructor(items) {     // Конструктор класу, який приймає початковий масив товарів
+//     this.items = items;  // Записуємо початковий масив в приватну властивість items
+//   }
 
-  getItems() { // Метод для отримання поточного масиву товарів
-    return this.items;
-  }
-  addItem(newItem) { // Метод для додавання нового товару до масиву
-    this.items.push(newItem);
-  }
-  removeItem(itemToRemove) { // Метод для видалення товару за назвою з масиву
-    this.items = this.items.filter(item => !item.includes(itemToRemove));
-    // Використовуємо метод filter для створення нового масиву без товару, який треба видалити
-  }
-}
+//   getItems() { // Метод для отримання поточного масиву товарів
+//     return this.items;
+//   }
+//   addItem(newItem) { // Метод для додавання нового товару до масиву
+//     this.items.push(newItem);
+//   }
+//   removeItem(itemToRemove) { // Метод для видалення товару за назвою з масиву
+//     this.items = this.items.filter(item => !item.includes(itemToRemove));
+//     // Використовуємо метод filter для створення нового масиву без товару, який треба видалити
+//   }
+// }
 
-const storage = new storageObj(["Nanitoids", "Prolonger", "Antigravitator"]);
-console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator"]
-storage.addItem("Droid");
-console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator", "Droid"]
-storage.removeItem("Prolonger");
-console.log(storage.getItems()); // ["Nanitoids", "Antigravitator", "Droid"]
+// const storage = new storageObj(["Nanitoids", "Prolonger", "Antigravitator"]);
+// console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator"]
+// storage.addItem("Droid");
+// console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator", "Droid"]
+// storage.removeItem("Prolonger");
+// console.log(storage.getItems()); // ["Nanitoids", "Antigravitator", "Droid"]
 
 
 // Исправление #2
-class Storage {
-  #items;                    // приватна властивість, що зберігає масив товарів
-  constructor(items) {      // конструктор класу, очікує масив товарів як єдиний аргумент
-    this.#items = items;   // записує масив товарів до приватної властивості #items
-  }
+// class Storage {
+//   #items;                    // приватна властивість, що зберігає масив товарів
+//   constructor(items) {      // конструктор класу, очікує масив товарів як єдиний аргумент
+//     this.#items = items;   // записує масив товарів до приватної властивості #items
+//   }
 
-  getItems() {     // метод, що повертає масив поточних товарів у приватній властивості #items
-    return this.#items;
-  }
+//   getItems() {     // метод, що повертає масив поточних товарів у приватній властивості #items
+//     return this.#items;
+//   }
 
-  addItem(newItem) {  // метод, що додає новий товар newItem до масиву товарів у приватну властивість #items об'єкта   
-    this.#items.push(newItem);
-  }
+//   addItem(newItem) {  // метод, що додає новий товар newItem до масиву товарів у приватну властивість #items об'єкта
+//     this.#items.push(newItem);
+//   }
 
-  removeItem(itemToRemove) {   // метод, що видаляє товар itemToRemove з масиву товарів у приватній властивості #items об'єкта
-    this.#items = this.#items.filter(item => item !== itemToRemove);
-  }
+//   removeItem(itemToRemove) {   // метод, що видаляє товар itemToRemove з масиву товарів у приватній властивості #items об'єкта
+//     this.#items = this.#items.filter(item => item !== itemToRemove);
+//   }
 
-}
+// }
 
 //!====================== TASK#3 =============================
 // Напиши клас StringBuilder, який приймає один параметр initialValue — довільний рядок,
@@ -675,24 +738,24 @@ class Storage {
 //  оголошення класу для перевірки коректності роботи.
 
 // Не принятое решение
-class StringBuilder {
-  #value;
-  constructor(initialValue) {// Конструктор класу, приймає початкове значення initialValue
-    this.#value = initialValue;// Записуємо початкове значення у приватну властивість value
-  }
-  getValue() { // Метод для отримання поточного значення
-    return this.#value;
-  }
-  padEnd(str) {// Метод для додавання рядка на кінець поточного значення
-    this.#value += str;
-  }
-  padStart(str) { // Метод для додавання рядка на початок поточного значенн
-    this.#value += str + this.#value;
-  }
-  padBoth(str) {   // Метод для додавання рядка на початок і кінець поточного значення
-    this.#value += str + this.#value + str;
-  }
-}
+// class StringBuilder {
+//   #value;
+//   constructor(initialValue) {// Конструктор класу, приймає початкове значення initialValue
+//     this.#value = initialValue;// Записуємо початкове значення у приватну властивість value
+//   }
+//   getValue() { // Метод для отримання поточного значення
+//     return this.#value;
+//   }
+//   padEnd(str) {// Метод для додавання рядка на кінець поточного значення
+//     this.#value += str;
+//   }
+//   padStart(str) { // Метод для додавання рядка на початок поточного значенн
+//     this.#value += str + this.#value;
+//   }
+//   padBoth(str) {   // Метод для додавання рядка на початок і кінець поточного значення
+//     this.#value += str + this.#value + str;
+//   }
+// }
 
 // Исправление #2
 // class StringBuilder {
@@ -734,14 +797,14 @@ class StringBuilder {
 // }
 
 
-const builder = new StringBuilder(".");
-console.log(builder.getValue()); // "."
-builder.padStart("^");
-console.log(builder.getValue()); // "^."
-builder.padEnd("^");
-console.log(builder.getValue()); // "^.^"
-builder.padBoth("=");
-console.log(builder.getValue()); // "=^.^="
+// const builder = new StringBuilder(".");
+// console.log(builder.getValue()); // "."
+// builder.padStart("^");
+// console.log(builder.getValue()); // "^."
+// builder.padEnd("^");
+// console.log(builder.getValue()); // "^.^"
+// builder.padBoth("=");
+// console.log(builder.getValue()); // "=^.^="
 
 // Доброго времени суток!
 // Спасибо за обратную связь!
