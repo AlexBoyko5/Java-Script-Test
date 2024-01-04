@@ -196,7 +196,60 @@
 // console.log(getShippingCost("Jamaica")); // "Shipping to Jamaica will cost 120 credits"
 // console.log(getShippingCost("Sweden")); // "Sorry, there is no delivery to your country"
 
-//~ ========================  Д/З
+//~ ========================  Д/З #3 МАСИВИ  ========================================================================
+
+//!====================== TASK#1 =============================
+
+// Перш, ніж розв’язувати задачу, давай визначимося із новим терміном!
+// Термін slug — це зрозумілий людині унікальний ідентифікатор, який використовується
+//  у веб розробці для створення читабельних URL - адрес.
+//   Наприклад, замість того, щоб користувач побачив в адресному рядку
+// mysite.com / posts / 1q8fh74tx, можна зробити slug із назви статті.
+// У результаті адреса буде приємнішою для сприйняття: mysite.com / posts / arrays -for-begginers.
+//     Slug — це завжди рядок у нижньому регістрі, слова якого розділені тире.
+// З цим розібралися ? А тепер давай нарешті виконувати задачу!
+// Напиши функцію slugify(title), яка приймає заголовок статті,
+//   параметр title і повертає slug, створений із цього рядка.
+// Значенням параметра title будуть рядки, слова яких розділені лише пробілами.
+// Усі символи slug повинні бути в нижньому регістрі.
+// Усі слова slug повинні бути розділені тире.
+
+
+//function slugify(title) { // Функція приймає заголовок статті та повертає його slug
+
+// let lowerCaseTitle = title.toLowerCase(); // Перетворюємо всі символи у рядку в нижній регістр
+
+//  let splitedTitle = lowerCaseTitle.split(' ');   // Розділяємо рядок на масив слів за допомогою пробілів
+
+// let slug = splitedTitle.join('-'); // З'єднуємо слова тире, отримуючи slug
+
+// return slug;  // Повертаємо отриманий slug
+//}
+
+// console.log(slugify("Arrays for begginers")); // "arrays-for-begginers"
+// console.log(slugify("English for developer")); // "english-for-developer"
+// console.log(slugify("Ten secrets of JavaScript")); // "ten-secrets-of-javascript"
+// console.log(slugify("How to become a JUNIOR developer in TWO WEEKS")); // "how-to-become-a-junior-developer-in-two-weeks"
+
+//!====================== TASK#2 =============================
+// Напиши функцію під назвою makeArray, яка приймає три параметри:
+// firstArray(масив), secondArray(масив) і maxLength(число).
+// Функція повинна створювати новий масив, який містить усі елементи
+//  з firstArray, а потім усі елементи з secondArray.
+// Якщо кількість елементів у новому масиві перевищує maxLength,
+// функція повинна повернути копію масиву з довжиною maxLength елементів.
+// В іншому випадку функція повинна повернути весь новий масив.
+
+console.log(makeArray(["Mango", "Poly"], ["Ajax", "Chelsea"], 3)); // ["Mango", "Poly", "Ajax"]
+console.log(makeArray(["Mango", "Poly", "Houston"], ["Ajax", "Chelsea"], 4)); // ["Mango", "Poly", "Houston", "Ajax"]
+console.log(makeArray(["Mango"], ["Ajax", "Chelsea", "Poly", "Houston"], 3)); // ["Mango", "Ajax", "Chelsea"]
+console.log(makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus"], 2)); // ["Earth", "Jupiter"]
+console.log(makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus"], 4)); // ["Earth", "Jupiter", "Neptune", "Uranus"]
+console.log(makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus", "Venus"], 0)); // []
+
+//!====================== TASK#3 =============================
+
+//~ ========================  Д/З======================== ======================== ======================== 
 //!====================== TASK#1 =============================
 //? Напиши стрілочну функцію getUserNames(users), яка прийматиме один параметр users — масив об’єктів користувачів.
 //? Функція має повертати масив імен усіх користувачів(властивість name) із масиву users.
@@ -811,4 +864,16 @@
 // Удалил репозиторий полностью и создал новый.
 //Task2: items сделал частной(#items);   в removeItem вместо includes использовал(!==);
 //Task3: constructor(initialValue) поменял на constructor(startValue);  value частная(#value);   padStart исправил на - { this.#value = str + this.#value; };
-//padBoth  исправил на - { this.#value = str + this.#value + str; }  
+//padBoth  исправил на - { this.#value = str + this.#value + str; }
+
+const start = 6;
+const end = 17;
+let number;
+for (let i = start; i <= end; i++) {
+  if (i % 5 === 0) {
+    // Якщо поточне число ділиться на 5 без остачі
+    // Записуємо його в змінну number і завершуємо цикл
+    number = i;
+    break;
+  }
+}
