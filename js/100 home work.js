@@ -269,22 +269,24 @@
 //  кожного елемента и додавання до свого масиву.
 // Поверни свій новий масив з підходящими числами як результат.
 
-function filterArray(numbers, value) {
-  const newArray = []
-  for (let index = 0; index < array.length; index++) {
-    const element = array[index];
+// function filterArray(numbers, value) {
+//   const newArray = []
+//   for (let index = 0; index < array.length; index++) {
+//     const element = array[index];
 
-  }
-}
+//   }
+// }
 
-console.log(filterArray([1, 2, 3, 4, 5], 3)); // [4, 5]
-console.log(filterArray([1, 2, 3, 4, 5], 4)); // [5]
-console.log(filterArray([1, 2, 3, 4, 5], 5)); // []
-console.log(filterArray([12, 24, 8, 41, 76], 38)); // [41, 76]
-console.log(filterArray([12, 24, 8, 41, 76], 20)); // [24, 41, 76]
+// console.log(filterArray([1, 2, 3, 4, 5], 3)); // [4, 5]
+// console.log(filterArray([1, 2, 3, 4, 5], 4)); // [5]
+// console.log(filterArray([1, 2, 3, 4, 5], 5)); // []
+// console.log(filterArray([12, 24, 8, 41, 76], 38)); // [41, 76]
+// console.log(filterArray([12, 24, 8, 41, 76], 20)); // [24, 41, 76]
 
 
-//~ ========================  Д/З ======================================================================== 
+//~ ========================  Д/З Block#4 ========================================================================
+
+//~ ========================  Д/З ========================================================================
 //!====================== TASK#1 =============================
 //? Напиши стрілочну функцію getUserNames(users), яка прийматиме один параметр users — масив об’єктів користувачів.
 //? Функція має повертати масив імен усіх користувачів(властивість name) із масиву users.
@@ -583,7 +585,7 @@ console.log(filterArray([12, 24, 8, 41, 76], 20)); // [24, 41, 76]
 
 // console.log(getTotalBalanceByGender(allUsers, "female")); // 8863
 
-//~ //!====================== MODUL 5 ============================
+//~ ===================================== MODUL 5 ============================
 
 //!====================== TASK#3 =============================
 //^Напиши стрілочну функцію sortByDescendingFriendCount(users),
@@ -901,14 +903,58 @@ console.log(filterArray([12, 24, 8, 41, 76], 20)); // [24, 41, 76]
 //Task3: constructor(initialValue) поменял на constructor(startValue);  value частная(#value);   padStart исправил на - { this.#value = str + this.#value; };
 //padBoth  исправил на - { this.#value = str + this.#value + str; }
 
-const start = 6;
-const end = 17;
-let number;
-for (let i = start; i <= end; i++) {
-  if (i % 5 === 0) {
-    // Якщо поточне число ділиться на 5 без остачі
-    // Записуємо його в змінну number і завершуємо цикл
-    number = i;
-    break;
-  }
-}
+//~ ========================  Д/З БЛОК#7 ===============================================================================================
+
+// class User {
+//   email;
+//   constructor(email) {
+//     this.email = email;
+//   }
+//   get email() {
+//     return this.email;
+//   }
+//   set email(newEmail) {
+//     this.email = newEmail;
+//   }
+// }
+// class Admin extends User {
+//   static role = {
+//     BASIC: "basic",
+//     SUPERUSER: "superuser",
+//   };
+//   constructor({ email, access, blacklistedEmails }) {
+//     super(email);
+//     this.access = access;
+//     this.blacklistedEmails = blacklistedEmails;
+//   }
+//   blacklist(email) {
+//     this.blacklistedEmails.push(email);
+//   }
+//   isBlacklisted(email) {
+//     return this.blacklistedEmails.includes(email));
+//   }
+// }
+// const mango = new Admin({
+//   email: "mango@mail.com",
+//   access: Admin.role.SUPERUSER,
+//   blacklistedEmails: [],
+// });
+
+const apartment = {
+  imgUrl: "https://via.placeholder.com/640x480",
+  descr: "Spacious apartment in the city center",
+  rating: 4.7,
+  price: 5000,
+  tags: ["premium", "promoted", "top", "trusted"],
+  owner: {
+    name: "Henry Sibola",
+    phone: "982-126-1588",
+    email: "henry.carter@aptmail.com",
+  },
+};
+apartment.area = 60;
+apartment.rooms = 3;
+apartment.location = {
+  country: "Jamaica",
+  city: "Kingston",
+};
