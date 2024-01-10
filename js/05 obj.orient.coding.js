@@ -56,11 +56,25 @@
 //     },
 // };
 // user.showName();
-class User {
-    constructor(name, email) {
-        console.log(name, email);
-    }
-}
 
-const mango = new User("Mango", "mango@mail.com");
-console.log(mango);
+// Теперь ответим на ваши вопросы:
+
+// Почему не используется this в параметре pizzaName в методе checkPizza ?
+
+//   this в параметре не используется потому, что pizzaName - это просто локальная переменная,
+//  которая принимает значение, переданное при вызове метода.
+// Значение pizzaName передается методу в виде аргумента при вызове, и this не нужно для его использования в данном контексте.
+// return this.pizzas.includes(pizzaName);
+// Здесь this.pizzas обращается к свойству pizzas объекта pizzaPalace,
+// а pizzaName - это аргумент метода, который используется для проверки вхождения в массив pizzas.
+
+// Почему не используется this в параметре pizzaName в строке const isPizzaAvailable = this.checkPizza(pizzaName);?
+// Также, как и в первом случае, this не нужно в параметре pizzaName,
+// потому что pizzaName - это просто локальная переменная,
+// которая получает значение при вызове метода.this используется для обращения
+// к свойствам и методам объекта, а не для передачи аргументов в метод.
+// const isPizzaAvailable = this.checkPizza(pizzaName);
+// Здесь this.checkPizza(pizzaName) вызывает метод checkPizza объекта pizzaPalace,
+// и this внутри этого метода будет ссылаться на сам объект.
+
+//^=============================================================================================================================

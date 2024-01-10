@@ -940,21 +940,18 @@
 //   blacklistedEmails: [],
 // });
 
-const apartment = {
-  imgUrl: "https://via.placeholder.com/640x480",
-  descr: "Spacious apartment in the city center",
-  rating: 4.7,
-  price: 5000,
-  tags: ["premium", "promoted", "top", "trusted"],
-  owner: {
-    name: "Henry Sibola",
-    phone: "982-126-1588",
-    email: "henry.carter@aptmail.com",
+const pizzaPalace = {
+  pizzas: ["Supercheese", "Smoked", "Four meats"],
+  checkPizza(pizzaName) {
+    return pizzas.includes(pizzaName);
   },
-};
-apartment.area = 60;
-apartment.rooms = 3;
-apartment.location = {
-  country: "Jamaica",
-  city: "Kingston",
+  order(pizzaName) {
+    const isPizzaAvailable = checkPizza(pizzaName);
+
+    if (!isPizzaAvailable) {
+      return `Sorry, there is no pizza named «${pizzaName}»`;
+    }
+
+    return `Order accepted, preparing «${pizzaName}» pizza`;
+  },
 };
