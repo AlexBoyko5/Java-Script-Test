@@ -812,6 +812,29 @@
 
 // }
 
+// При вызове console.log(storage.getItems()); в консоль браузера должно вывестись["Nanitoids", "Prolonger", "Antigravitator"],
+//   а выводится["Nanitoids", "Prolonger", "Antigravitator", "Droid"].
+
+// GPT ответ №1: 
+// Чтобы при вызове console.log(storage.getItems()) в консоль разработчика браузера выводилось
+// ["Nanitoids", "Prolonger", "Antigravitator"], а не["Nanitoids", "Prolonger", "Antigravitator", "Droid"],
+//   вам нужно удалить элемент "Droid" из массива #items.Для этого вы можете использовать 
+//   метод removeItem(itemToRemove), который удаляет элемент из массива.
+//   В вашем случае, вы можете вызвать storage.removeItem("Droid"), чтобы удалить "Droid"
+//    из массива #items.Затем, при вызове console.log(storage.getItems()),
+//   в консоль разработчика браузера будет выводиться массив["Nanitoids", "Prolonger", "Antigravitator"].
+
+//   GPT ответ №2:
+// Ваш код console.log(storage.getItems()); выводит результат в формате,
+//   который включает не только массив, но и дополнительную информацию об объекте в консоли.
+//   Это стандартное поведение в некоторых средах разработки и консолях браузера.
+// Если вы хотите увидеть только массив в форме["Nanitoids", "Prolonger", "Antigravitator"],
+//   вам, возможно, нужно использовать JSON.stringify при выводе в консоль:
+// console.log(JSON.stringify(storage.getItems()));
+// Это приведет к выводу только содержимого массива без дополнительной информации:
+// ["Nanitoids", "Prolonger", "Antigravitator"]
+
+
 //!====================== TASK#3 =============================
 // Напиши клас StringBuilder, який приймає один параметр initialValue — довільний рядок,
 // який записується у приватну властивість value об'єкта, що створюється.
