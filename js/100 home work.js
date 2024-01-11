@@ -815,10 +815,10 @@
 // При вызове console.log(storage.getItems()); в консоль браузера должно вывестись["Nanitoids", "Prolonger", "Antigravitator"],
 //   а выводится["Nanitoids", "Prolonger", "Antigravitator", "Droid"].
 
-// GPT ответ №1: 
+// GPT ответ №1:
 // Чтобы при вызове console.log(storage.getItems()) в консоль разработчика браузера выводилось
 // ["Nanitoids", "Prolonger", "Antigravitator"], а не["Nanitoids", "Prolonger", "Antigravitator", "Droid"],
-//   вам нужно удалить элемент "Droid" из массива #items.Для этого вы можете использовать 
+//   вам нужно удалить элемент "Droid" из массива #items.Для этого вы можете использовать
 //   метод removeItem(itemToRemove), который удаляет элемент из массива.
 //   В вашем случае, вы можете вызвать storage.removeItem("Droid"), чтобы удалить "Droid"
 //    из массива #items.Затем, при вызове console.log(storage.getItems()),
@@ -962,19 +962,4 @@
 //   access: Admin.role.SUPERUSER,
 //   blacklistedEmails: [],
 // });
-
-const pizzaPalace = {
-  pizzas: ["Supercheese", "Smoked", "Four meats"],
-  checkPizza(pizzaName) {
-    return pizzas.includes(pizzaName);
-  },
-  order(pizzaName) {
-    const isPizzaAvailable = checkPizza(pizzaName);
-
-    if (!isPizzaAvailable) {
-      return `Sorry, there is no pizza named «${pizzaName}»`;
-    }
-
-    return `Order accepted, preparing «${pizzaName}» pizza`;
-  },
-};
+//~ ======================== //~ ======================== //~ ======================== 
