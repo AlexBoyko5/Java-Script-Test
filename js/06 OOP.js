@@ -2,10 +2,10 @@
 //  прямо з JavaScript коду, і під час виконання скрипта значення в HTML,
 //     тобто в DOM - дереві, зміниться.
 
-const link = document.querySelector(".link");
-console.log(link.href);
-link.href = "[<https://neo.goit.global>](<https://neo.goit.global/>)";
-console.log(link.href);
+// const link = document.querySelector(".link");
+// console.log(link.href);
+// link.href = "[<https://neo.goit.global>](<https://neo.goit.global/>)";
+// console.log(link.href);
 
 
 //У живому прикладі ми працюємо із зображенням і змінюємо значення
@@ -13,12 +13,12 @@ console.log(link.href);
 // замена картинки A laptop на "River bank".
 
 
-const image = document.querySelector(".image");
-console.log(image.src); // https://picsum.photos/id/9/320/240
-console.log(image.alt); // A laptop
+// const image = document.querySelector(".image");
+// console.log(image.src); // https://picsum.photos/id/9/320/240
+// console.log(image.alt); // A laptop
 
-image.src = "https://picsum.photos/id/13/640/480";
-image.alt = "River bank";
+// image.src = "https://picsum.photos/id/13/640/480";
+// image.alt = "River bank";
 
 //^===============================================================================
 

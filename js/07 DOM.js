@@ -27,7 +27,7 @@
 
 // З використанням властивостей і методів DOM - елементів, напиши скрипт, який:
 // Порахує й виведе в консоль кількість категорій в ul#categories,
-// тобто елементів li.item.Для кожного елемента li.item у списку 
+// тобто елементів li.item.Для кожного елемента li.item у списку
 // ul#categories знайде й виведе в консоль текст
 // заголовка елемента(тегу < h2 >) і кількість елементів у
 // категорії(усіх < li >, вкладених у нього).
@@ -54,28 +54,28 @@
 //             </ul>
 //         </body>
 
-//     </html> 
+//     </html>
 
 // Отримую список всіх елементів ul#categories
-const categories = document.querySelector('#categories');
+// const categories = document.querySelector('#categories');
 
 // Отримую список всіх елементів li.item у списку ul#categories
-const items = categories.querySelectorAll('.item');
+// const items = categories.querySelectorAll('.item');
 
 // Виводжу кількість категорій в консоль
-console.log(`Количество категорий: ${items.length}`);
+// console.log(`Количество категорий: ${items.length}`);
 
 // Для кожного елемента li.item у списку ul#categories
-items.forEach(item => {
-    // Знаходжу текст заголовка елемента (тегу <h2>)
-    const title = item.querySelector('h2').textContent;
+// items.forEach(item => {
+// Знаходжу текст заголовка елемента (тегу <h2>)
+// const title = item.querySelector('h2').textContent;
 
-    // Знаходжу кількість елементів у категорії (усіх <li>, вкладених у нього)
-    const count = item.querySelectorAll('li').length;
+// Знаходжу кількість елементів у категорії (усіх <li>, вкладених у нього)
+// const count = item.querySelectorAll('li').length;
 
-    // Виводжу текст заголовка та кількість елементів у категорії в консоль
-    console.log(`${title}: ${count}`);
-});
+// Виводжу текст заголовка та кількість елементів у категорії в консоль
+// console.log(`${title}: ${count}`);
+// });
 //!====================== TASK#2 =============================
 
 // Напиши скрипт для створення галереї зображень на основі масиву даних.
