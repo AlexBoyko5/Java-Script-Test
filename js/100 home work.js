@@ -963,3 +963,31 @@
 //   blacklistedEmails: [],
 // });
 //~ ======================== //~ ======================== //~ ========================
+
+const list1 = document.querySelector(".text")
+const heading3 = document.createElement("h3");
+heading3.classList.add("title");
+heading3.textContent = "This is a heading";
+list1.before(heading3);
+console.log(list1);
+
+const title = document.querySelector(".title")
+title.remove();
+
+const image = document.createElement("img");
+image.src = "<https://picsum.photos/id/11/320/240>";
+image.alt = "Nature";
+console.log(image); // <img src="<https://picsum.photos/id/11/320/240>" alt="Nature" />
+
+// const technologies = ["HTML", "CSS", "JavaScript", "React", "Node"];
+// const list = document.querySelector(".list");
+
+// const markup = technologies
+//   .map((technology) => `<li class="list-item">${technology}</li>`)
+//   .join("");
+
+// // Check the console, you'll see a single string with HTML tags
+// console.log(markup);
+
+// // Adding all the markup in one operation
+// list.innerHTML = markup;
