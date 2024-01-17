@@ -10,6 +10,8 @@
 // image.alt = "Nature";
 // console.log(image); // <img src="<https://picsum.photos/id/11/320/240>" alt="Nature" />
 
+//~ ======================== //~ ======================== //~ ========================
+//^ ==== Добавляем/убираем элем в .classList =================
 // const list1 = document.querySelector(".text")
 // const heading3 = document.createElement("h3");
 // heading3.classList.add("title");
@@ -20,10 +22,27 @@
 // const title = document.querySelector(".title")
 // title.remove();
 
-// const image = document.createElement("img");
-// image.src = "<https://picsum.photos/id/11/320/240>";
-// image.alt = "Nature";
-// console.log(image); //<img src="<https://picsum.photos/id/11/320/240>" alt="Nature" />
+//^ ==== Добавляем/изменяем картинки =================
+// Изменяем изображение(https://picsum.photos/id/11/320/240) на
+//   (https://kartinki.pics/uploads/posts/2022-12/thumbs/1672128931_kartinkin-net-p-fenek-kartinki-krasivo-1.jpg')
+//     а потом на (https://kartinki.pics/uploads/posts/2022-12/1672128631_kartinkin-net-p-kartinka-palitra-s-kraskami-instagram-1.jpg)
+
+// Отримати елемент з класом "image"
+// const imageElement = document.querySelector('.image');
+
+// Змінити атрибут src
+// imageElement.src = 'https://kartinki.pics/uploads/posts/2022-12/thumbs/1672128931_kartinkin-net-p-fenek-kartinki-krasivo-1.jpg';
+
+// Змінити атрибут alt
+// imageElement.alt = 'Fox';
+
+// imageElement.setAttribute('src', 'https://kartinki.pics/uploads/posts/2022-12/1672128631_kartinkin-net-p-kartinka-palitra-s-kraskami-instagram-1.jpg');
+// imageElement.setAttribute('alt', 'Palitra');
+// console.log(imageElement);
+// console.log(imageElement.getAttribute('alt'));
+
+
+//^ ==== Добавляем разметку =================
 //? =====================================================================
 // const technologies = ["HTML", "CSS", "JavaScript", "React", "Node"];
 // const list = document.querySelector(".list");
@@ -37,6 +56,9 @@
 
 // // Adding all the markup in one operation
 // list.innerHTML = markup;
+
+//~ ======================== //~ ======================== //~ ========================
+
 
 //~ ========================  Д/З БЛОК#7 =========================================================================================
 
@@ -197,34 +219,63 @@
 //         </body>
 //     </html>
 
-
-// const galleryContainer = document.querySelector('.gallery');// Отримуємо посилання на елемент ul.gallery
-
-// const images = [ // Масив об'єктів із зображеннями
-//     // об'єкти з url та alt для кожного зображення
-//     // ...
+//? ===================================================================================
+// const gallery = document.querySelector('.gallery');// Отримуємо посилання на елемент ul.gallery/отрим.елемент ul з класом "gallery"
+// const images = [ // Масив об'єктів із зображеннями, об'єкти з url та alt для кожного зображення
+//     {
+//         url: 'https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+//         alt: 'White and Black Long Fur Cat',
+//     },
+//     {
+//         url: 'https://images.pexels.com/photos/213399/pexels-photo-213399.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+//         alt: 'Orange and White Koi Fish Near Yellow Koi Fish',
+//     },
+//     {
+//         url: 'https://images.pexels.com/photos/219943/pexels-photo-219943.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+//         alt: 'Group of Horses Running',
+//     },
+//     {
+//         url:
+//             'https://images.pexels.com/photos/66898/elephant-cub-tsavo-kenya-66898.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+//         alt: 'Elephant Beside on Baby Elephant',
+//     },
+//     {
+//         url:
+//             'https://images.pexels.com/photos/37833/rainbow-lorikeet-parrots-australia-rainbow-37833.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+//         alt: 'Blue Geeen and Orange Parrot',
+//     },
+//     {
+//         url:
+//             'https://images.pexels.com/photos/247376/pexels-photo-247376.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+//         alt: 'Zebras on Zebra',
+//     },
 // ];
+
 
 // images.forEach(imageData => { // Цикл по кожному об'єкту в масиві images
 //     const listItem = document.createElement('li'); // Створюємо новий елемент li
 //     const imageElement = document.createElement('img'); // Створюємо новий елемент img
-//     imageElement.src = imageData.url; // Додаємо атрибути src та alt до зображення з даних об'єкта
-//     imageElement.alt = imageData.alt; // Додаємо атрибути src та alt до зображення з даних об'єкта
+//     imageElement.src = imageData.url;// Додаємо атрибути src та alt до зображення з даних об'єкта
+//     imageElement.alt = imageData.alt;// Додаємо атрибути src та alt до зображення з даних об'єкта
 //     imageElement.classList.add('gallery-image'); // Додаємо клас 'gallery-image' до зображення
 //     listItem.appendChild(imageElement); // Додаємо зображення в елемент li
-//     galleryContainer.appendChild(listItem); // Додавання напряму до контейнера
+//     gallery.appendChild(listItem); // Додаємо зображення в елемент ul
 // });
 
-// Щоб додати мінімальне оформлення галереї флексбоксами через CSS класи,
-// .gallery {
-//     display: flex;
-//     flex - wrap: wrap;
-//     gap: 16px;
-// }
+// gallery.style.listStyle = 'none';
+// gallery.style.display = 'flex';
+// gallery.style.justifyContent = 'center';
+// gallery.style.alignItems = 'center';
+// gallery.style.flexWrap = 'wrap';
+// gallery.style.gap = '10px';
 
-// .gallery li {
-//     flex - basis: calc(33.33 % - 16px);
-// }
+// const galleryImages = document.querySelectorAll('.gallery-image'); // Отримати всі елементи li з класом "gallery-image"
+// galleryImages.forEach(image => {// Налаштувати стилі для кожного елемента
+//     image.style.width = '300px';
+//     image.style.height = '200px';
+//     image.style.border = '2px solid black';
+//     image.style.borderRadius = '10px';
+// });
 //? ===================================================================================
 // // Отримуємо посилання на список ul.gallery
 // const gallery = document.querySelector('.gallery');
@@ -316,7 +367,72 @@
 //         який автоматично пристосовується до розміру екрана.
 
 //!====================== TASK#3 =============================
+//&===================== Variannt 1===========================
+// // Отримуємо елементи input та span
+// const nameInput = document.getElementById('name-input');
+// const nameOutput = document.getElementById('name-output');
+
+// // Додаємо обробник події input до input#name-input
+// nameInput.addEventListener('input', function () {
+//     // Отримуємо поточне значення ім'я (очищене від пробілів)
+//     const nameValue = nameInput.value.trim();
+
+//     // Перевіряємо, чи ім'я не порожнє або не містить лише пробіли
+//     // Якщо так, встановлюємо значення "Anonymous", інакше встановлюємо поточне ім'я
+//     nameOutput.textContent = nameValue === '' ? 'Anonymous' : nameValue;
+// });
+// Отримуємо елементи: Ми отримуємо елементи input та span за допомогою їх ідентифікаторів.
+
+// Додаємо обробник події input: Ми додаємо обробник події input до input#name - input, який викликається кожен раз, коли користувач вводить текст.
+
+// Отримуємо поточне значення ім'я: Ми отримуємо поточне значення з інпуту та очищаємо його від пробілів по краях за допомогою методу trim().
+
+// Перевіряємо умову і встановлюємо значення: Ми перевіряємо, чи ім'я не порожнє або не містить лише пробіли. Якщо умова виконується, ми встановлюємо значення "Anonymous", інакше ми встановлюємо поточне ім'я.
+
+//&===================== Variannt 2===========================
+
+// // Отримуємо доступ до елементів DOM
+// const input = document.querySelector('#name-input');
+// const output = document.querySelector('#name-output');
+
+// // Створюємо функцію, яка буде викликатися при зміні значення інпуту
+// function handleInputChange(event) {
+//     // Отримуємо значення інпуту
+//     const inputValue = event.target.value.trim();
+
+//     // Якщо інпут порожній або містить лише пробіли, то виводимо "Anonymous"
+//     if (inputValue === '') {
+//         output.textContent = 'Anonymous';
+//     } else {
+//         // Інакше виводимо значення інпуту
+//         output.textContent = inputValue;
+//     }
+// }
+
+// // Додаємо обробник події input на інпут
+// input.addEventListener('input', handleInputChange);
+
+// Цей код отримує доступ до елементів input#name - input та span#name - output за допомогою методу document.querySelector().Далі створюється функція handleInputChange, яка буде викликатися при зміні значення інпуту.В цій функції отримується значення інпуту за допомогою властивості event.target.value, після чого воно очищається від пробілів по краях за допомогою методу trim().Якщо інпут порожній або містить лише пробіли, то виводимо “Anonymous”, інакше виводимо значення інпуту.
+
+//  Нарешті, за допомогою методу addEventListener() додаємо обробник події input на інпут, який буде викликати функцію handleInputChange при зміні значення інпуту.
+
+
+
+
 //!====================== TASK#4 =============================
 //!====================== TASK#5 =============================
 //!====================== TASK#6 =============================
 
+// Отримуємо елементи input та span
+const nameInput = document.getElementById('name-input');
+const nameOutput = document.getElementById('name-output');
+
+// Додаємо обробник події input до input#name-input
+nameInput.addEventListener('input', function () {
+    // Отримуємо поточне значення ім'я (очищене від пробілів)
+    const nameValue = nameInput.value.trim();
+
+    // Перевіряємо, чи ім'я не порожнє або не містить лише пробіли
+    // Якщо так, встановлюємо значення "Anonymous", інакше встановлюємо поточне ім'я
+    nameOutput.textContent = nameValue === '' ? 'Anonymous' : nameValue;
+});
