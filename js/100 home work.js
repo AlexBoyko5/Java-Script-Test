@@ -964,51 +964,15 @@
 // });
 //~ ======================== //~ ======================== //~ ========================
 
-const list1 = document.querySelector(".text")
-const heading3 = document.createElement("h3");
-heading3.classList.add("title");
-heading3.textContent = "This is a heading";
-list1.before(heading3);
-console.log(list1);
-
-// const title = document.querySelector(".title")
-// title.remove();
-
-// const image = document.createElement("img");
-// image.src = "https://picsum.photos/id/11/320/240";
-// image.alt = "Nature";
-// console.log(image); // <img src="https://picsum.photos/id/11/320/240" alt="Nature" />
-// console.log(image.getAttribute('alt'));
-
+const button = document.querySelector(".my-button");
+console.log(button);
+const handleClick = () => {
+  console.log("The button was pressed and now the next image will appear");
+};
+console.log(handleClick);
+button.addEventListener("click", handleClick);
+console.log(button.addEventListener);
 //^ =====================================================================
-// Изменяем изображение(https://picsum.photos/id/11/320/240) на 
-//   (https://kartinki.pics/uploads/posts/2022-12/thumbs/1672128931_kartinkin-net-p-fenek-kartinki-krasivo-1.jpg')
-//     а потом на (https://kartinki.pics/uploads/posts/2022-12/1672128631_kartinkin-net-p-kartinka-palitra-s-kraskami-instagram-1.jpg)
 
-// Отримати елемент з класом "image"
-const imageElement = document.querySelector('.image');
-
-// Змінити атрибут src
-imageElement.src = 'https://kartinki.pics/uploads/posts/2022-12/thumbs/1672128931_kartinkin-net-p-fenek-kartinki-krasivo-1.jpg';
-
-// Змінити атрибут alt 
-imageElement.alt = 'Fox';
-
-imageElement.setAttribute('src', 'https://kartinki.pics/uploads/posts/2022-12/1672128631_kartinkin-net-p-kartinka-palitra-s-kraskami-instagram-1.jpg');
-imageElement.setAttribute('alt', 'Palitra');
-console.log(imageElement);
-console.log(imageElement.getAttribute('alt'));
 
 //? =====================================================================
-// const technologies = ["HTML", "CSS", "JavaScript", "React", "Node"];
-// const list = document.querySelector(".list");
-
-// const markup = technologies
-//   .map((technology) => `<li class="list-item">${technology}</li>`)
-//   .join("");
-
-// // Check the console, you'll see a single string with HTML tags
-// console.log(markup);
-
-// // Adding all the markup in one operation
-// list.innerHTML = markup;

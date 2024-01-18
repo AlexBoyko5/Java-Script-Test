@@ -367,6 +367,18 @@
 //         який автоматично пристосовується до розміру екрана.
 
 //!====================== TASK#3 =============================
+//&===================== Мой вариант===========================
+const inputElem = document.querySelector('#name-input');// Отримуємо елементи input та span
+const spanElem = document.querySelector('#name-output');
+inputElem.addEventListener("input", onInputFill);// Додаємо обробник події input до inputElem
+function onInputFill() { // Створюємо функцію, яка буде викликатися при зміні значення інпуту
+    const inputValue = inputElem.value.trim();// Отримуємо значення інпуту,без пробе в нач и конце-trim()
+    if (inputValue === "") { // Якщо інпут порожній або містить лише пробіли, то виводимо "Anonymous"
+        spanElem.textContent = 'Anonymous';
+    } else {
+        spanElem.textContent = inputValue;// Інакше виводимо значення інпуту
+    }
+};
 //&===================== Variannt 1===========================
 // // Отримуємо елементи input та span
 // const nameInput = document.getElementById('name-input');
@@ -420,19 +432,285 @@
 
 
 //!====================== TASK#4 =============================
+//&===================== Мой вариант===========================
+// const logForm = document.querySelector(".login-form"); // Отримуємо форму за класом .login-form
+// logForm.addEventListener("submit", event => {// Додаємо обробник події submit до форми
+//     event.preventDefault(); // Забороняємо стандартну поведінку форми (перезавантаження сторінки)
+
+//     const emailInput = logForm.elements.email; // Отримуємо значення полів форми за допомогою властивості elements
+//     const passwordInput = logForm.elements.password;
+
+//     const emailValue = emailInput.value.trim(); // Отримуємо значення полів та очищаємо їх від пробілів по краях
+//     const passwordValue = passwordInput.value.trim();
+
+
+//     if (emailValue === "" || passwordValue === "") { // Перевіряємо, чи всі поля заповнені
+//         alert("All form fields must be filled in!");// Виводимо повідомлення, якщо є незаповнені поля
+//     }
+//     else {
+//         const logFormData = {// Інакше зберігаємо значення полів у змінну formData
+//             email: emailValue,
+//             password: passwordValue,
+//         };
+//         console.log(logFormData);// Виводимо formData в консоль
+//     }
+//     logForm.reset();// Очищаємо значення полів та форми
+// });
+//&===================== Variannt 1===========================
+// Отримуємо посилання на форму та її елементи
+// const loginForm = document.querySelector('.login-form');
+// const emailInput = loginForm.elements['email'];
+// const passwordInput = loginForm.elements['password'];
+
+// Додаємо слухач події submit на формі
+// loginForm.addEventListener('submit', function (event) {
+// Забороняємо стандартну поведінку форми (перезавантаження сторінки)
+// event.preventDefault();
+
+// Отримуємо значення полів та очищаємо їх від пробілів по краях
+// const emailValue = emailInput.value.trim();
+// const passwordValue = passwordInput.value.trim();
+
+// Перевіряємо, чи усі поля заповнені
+// if (emailValue === '' || passwordValue === '') {
+// Виводимо повідомлення, якщо є незаповнені поля
+// alert('All form fields must be filled in');
+// } else {
+// Створюємо об'єкт із введеними даними
+// const formData = {
+//     email: emailValue,
+//     password: passwordValue
+// };
+
+// Виводимо об'єкт у консоль
+// console.log(formData);
+
+// Очищаємо значення полів та форми
+//         loginForm.reset();
+//     }
+// });
+// Основна ідея: Спочатку отримуємо посилання на форму та її елементи.
+// Додаємо слухач події submit на формі, який перехоплює відправку форми.
+// Забороняємо стандартну поведінку форми для того, щоб сторінка не перезавантажувалася
+// Перевіряємо, чи всі поля заповнені.Якщо ні, виводимо повідомлення; якщо так,
+//     створюємо об'єкт із введеними даними, виводимо його у консоль 
+// та очищаємо значення полів та саму форму.
+
+//&===================== Variannt 2===========================
+// Отримуємо форму за класом .login-form
+// const loginForm = document.querySelector('.login-form');
+
+// Додаємо обробник події submit до форми
+// loginForm.addEventListener('submit', (event) => {
+// Запобігаємо перезавантаженню сторінки
+// event.preventDefault();
+
+// Отримуємо значення полів форми за допомогою властивості elements
+// const emailInput = loginForm.elements.email;
+// const passwordInput = loginForm.elements.password;
+
+// Перевіряємо, чи всі поля заповнені
+// if (emailInput.value.trim() === '' || passwordInput.value.trim() === '') {
+// Якщо якесь поле порожнє, виводимо повідомлення про помилку за допомогою alert()
+//     alert('All form fields must be filled in');
+// } else {
+// Інакше зберігаємо значення полів у змінну formData
+// const formData = {
+//     email: emailInput.value.trim(),
+//     password: passwordInput.value.trim(),
+// };
+// Виводимо formData в консоль
+// console.log(formData);
+// Очищаємо поля форми методом reset()
+// loginForm.reset();
+//     }
+// });
+
+
 //!====================== TASK#5 =============================
+// Отримуємо посилання на елементи DOM
+const bodyElement = document.body;
+const colorSpan = document.querySelector('.color');
+const changeColorButton = document.querySelector('.change-color');
+
+// Функція для генерації випадкового кольору в hex-форматі
+function getRandomHexColor() {
+    return `#${Math.floor(Math.random() * 16777215)
+        .toString(16)
+        .padStart(6, '0')}`;
+}
+
+// Додаємо слухач події click на кнопку
+changeColorButton.addEventListener('click', function () {
+    // Генеруємо випадковий колір
+    const randomColor = getRandomHexColor();
+
+    // Змінюємо фон body на випадковий кольор
+    bodyElement.style.backgroundColor = randomColor;
+
+    // Встановлюємо текстовий вміст для span.color
+    colorSpan.textContent = randomColor;
+
+    // Додатково можна вивести кольор у консоль
+    console.log('Selected color:', randomColor);
+});
+
+Отримання елементів DOM: Отримуємо посилання на елементи body, span.color і button.change - color.
+Функція getRandomHexColor(): Ця функція генерує випадковий колір у форматі hex.
+Слухач події click: Додаємо слухач події click на кнопку "Change color".
+Зміна кольору: При кожному кліку на кнопку генеруємо випадковий колір, змінюємо фон body та встановлюємо цей колір як текстовий вміст для span.color.
+Додаткова інформація: Звертаємо увагу на те, що зміна фону на body відбувається тільки після кліку на кнопку.
+
+//&===================== Variannt 2===========================
+// Отримуємо кнопку з класом .change-color
+const changeColorButton = document.querySelector('.change-color');
+
+// Додаємо обробник події click до кнопки
+changeColorButton.addEventListener('click', () => {
+    // Генеруємо випадковий колір
+    const randomColor = getRandomHexColor();
+
+    // Задаємо випадковий колір як фоновий колір елемента <body>
+    document.body.style.backgroundColor = randomColor;
+
+    // Змінюємо текстовий вміст елемента з класом .color на значення згенерованого кольору
+    const colorSpan = document.querySelector('.color');
+    colorSpan.textContent = randomColor;
+});
+
+// Функція для генерації випадкового кольору у hex-форматі
+function getRandomHexColor() {
+    return `#${Math.floor(Math.random() * 16777215)
+        .toString(16)
+        .padStart(6, 0)}`;
+}
+
+
+
 //!====================== TASK#6 =============================
 
-// Отримуємо елементи input та span
-const nameInput = document.getElementById('name-input');
-const nameOutput = document.getElementById('name-output');
 
-// Додаємо обробник події input до input#name-input
-nameInput.addEventListener('input', function () {
-    // Отримуємо поточне значення ім'я (очищене від пробілів)
-    const nameValue = nameInput.value.trim();
+// Отримуємо посилання на елементи DOM
+const inputElement = document.querySelector('input');
+const createButton = document.querySelector('[data-create]');
+const destroyButton = document.querySelector('[data-destroy]');
+const boxesDiv = document.getElementById('boxes');
 
-    // Перевіряємо, чи ім'я не порожнє або не містить лише пробіли
-    // Якщо так, встановлюємо значення "Anonymous", інакше встановлюємо поточне ім'я
-    nameOutput.textContent = nameValue === '' ? 'Anonymous' : nameValue;
+// Додаємо слухач подій на кнопку "Create"
+createButton.addEventListener('click', createBoxes);
+
+// Додаємо слухач подій на кнопку "Destroy"
+destroyButton.addEventListener('click', destroyBoxes);
+
+// Функція для створення блоків
+function createBoxes() {
+    // Отримуємо кількість блоків, яку ввів користувач
+    const numberOfBoxes = inputElement.value;
+
+    // Провіряємо, чи кількість в межах діапазону 1-100
+    if (numberOfBoxes < 1 || numberOfBoxes > 100) {
+        alert('Please enter a number between 1 and 100.');
+        return;
+    }
+
+    // Очищаємо div#boxes перед створенням нових блоків
+    destroyBoxes();
+
+    // Створюємо масив блоків та додаємо їх до div#boxes
+    const boxesArray = createBoxesArray(numberOfBoxes);
+    boxesDiv.append(...boxesArray);
+
+    // Очищаємо значення в input
+    inputElement.value = '';
+}
+
+// Функція для створення масиву блоків
+function createBoxesArray(numberOfBoxes) {
+    const boxesArray = [];
+
+    // Створюємо блоки та додаємо їх до масиву
+    let size = 30;
+    for (let i = 0; i < numberOfBoxes; i++) {
+        const box = document.createElement('div');
+        box.style.width = `${size}px`;
+        box.style.height = `${size}px`;
+        box.style.backgroundColor = getRandomHexColor();
+        size += 10;
+
+        boxesArray.push(box);
+    }
+
+    return boxesArray;
+}
+
+// Функція для очищення div#boxes
+function destroyBoxes() {
+    boxesDiv.innerHTML = '';
+}
+
+// Функція для отримання випадкового кольору
+function getRandomHexColor() {
+    return `#${Math.floor(Math.random() * 16777215)
+        .toString(16)
+        .padStart(6, '0')}`;
+}
+
+
+//&===================== Variannt 2===========================
+// Отримуємо елементи з DOM
+const input = document.querySelector('input');
+const createButton = document.querySelector('[data-create]');
+const destroyButton = document.querySelector('[data-destroy]');
+const boxesContainer = document.querySelector('#boxes');
+
+// Додаємо обробник події click до кнопки Create
+createButton.addEventListener('click', () => {
+    // Провалідовуємо значення в input
+    const amount = Number(input.value);
+    if (amount >= 1 && amount <= 100) {
+        // Викликаємо функцію createBoxes() з вказаною кількістю елементів для рендеру
+        createBoxes(amount);
+        // Очищаємо значення в input
+        input.value = '';
+    }
 });
+
+// Додаємо обробник події click до кнопки Destroy
+destroyButton.addEventListener('click', () => {
+    // Очищаємо всі елементи в div#boxes
+    destroyBoxes();
+});
+
+// Функція для рендеру елементів на сторінці
+function createBoxes(amount) {
+    // Розміри першого <div> елемента
+    let size = 30;
+
+    for (let i = 0; i < amount; i++) {
+        // Створюємо новий <div> елемент
+        const box = document.createElement('div');
+        // Задаємо розміри та випадковий колір фону
+        box.style.width = `${size}px`;
+        box.style.height = `${size}px`;
+        box.style.backgroundColor = getRandomHexColor();
+        // Додаємо елемент у DOM дочірніми елементами для div#boxes
+        boxesContainer.appendChild(box);
+        // Збільшуємо розміри для наступного елемента
+        size += 10;
+    }
+}
+
+// Функція для очищення всіх елементів в div#boxes
+function destroyBoxes() {
+    boxesContainer.innerHTML = '';
+}
+
+// Функція для генерації випадкового кольору у hex-форматі
+function getRandomHexColor() {
+    return `#${Math.floor(Math.random() * 16777215)
+        .toString(16)
+        .padStart(6, 0)}`;
+}
+
+
+//^=====================================================================================================

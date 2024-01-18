@@ -1,0 +1,6 @@
+.my-button {
+    display: block;
+    /* або display: flex; */
+    margin-top: 10px;
+    /* Задайте бажаний відступ від посилання */
+}
