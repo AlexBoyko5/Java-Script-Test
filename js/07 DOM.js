@@ -195,6 +195,25 @@
 // Виведення інформації в консоль: В останніх двох рядках виводимо в консоль інформацію
 // про поточну категорію, таку як ім'я категорії та кількість елементів у ній.
 
+// CSS для оформления
+
+//     title.classList.add('category-title');
+//     title.style.listStyle = 'none';
+//     // categories.style.display = 'flex';
+//     title.style.padding = '16px';
+//     // categories.style.flexdirection = 'column';
+//     // categories.style.alignitems = 'flex - start';
+//     title.style.gap = '16px';
+//     title.style.borderradius = '8px';
+//     title.style.background = '#F6F6FE';
+//
+// const categoryItems = category.querySelectorAll('.li');
+// categoryItems.forEach(image => {
+//     image.style.width = '300px';
+//     image.style.height = '200px';
+//     image.style.border = '2px solid black';
+//     image.style.borderRadius = '10px';
+// });
 
 //!====================== TASK#2 =============================
 
@@ -714,3 +733,66 @@ function getRandomHexColor() {
 
 
 //^=====================================================================================================
+//&================  task-05.js  ===================================================
+document.addEventListener("DOMContentLoaded", function () {
+    function getRandomHexColor() {
+        return `#${Math.floor(Math.random() * 16777215)
+            .toString(16)
+            .padStart(6, "0")}`;
+    }
+
+    const changeColorButton = document.querySelector(".change-color");
+    const widget = document.querySelector(".widget");
+    const colorSpan = document.querySelector(".color");
+
+    changeColorButton.addEventListener("click", () => {
+        const randomColor = getRandomHexColor();
+        document.body.style.backgroundColor = randomColor;
+        widget.style.backgroundColor = randomColor;
+        colorSpan.textContent = randomColor;
+    });
+});
+//&================  task-06.js  ===================================================
+
+function getRandomHexColor() {
+    return `#${Math.floor(Math.random() * 16777215)
+        .toString(16)
+        .padStart(6, 0)}`;
+}
+
+const userInput = document.querySelector("input");
+const createButton = document.querySelector("[data-create]");
+const destroyButton = document.querySelector("[data-destroy]");
+const boxesDiv = document.querySelector("#boxes");
+
+createButton.addEventListener("click", () => {
+    const amount = Number(userInput.value);
+    if (amount >= 1 && amount <= 100) {
+        createBoxes(amount);
+        userInput.value = "";
+    }
+});
+
+destroyButton.addEventListener("click", destroyBoxes);
+
+function createBoxes(amount) {
+    boxesDiv.innerHTML = "";
+
+    let initialBoxSize = 30;
+    let boxSizeIncrement = 10;
+    let size = 30;
+    for (let i = 0; i < amount; i++) {
+        const box = document.createElement("div");
+        box.classList.add("box");
+        box.style.width = `${initialBoxSize}px`;
+        box.style.height = `${initialBoxSize}px`;
+        box.style.backgroundColor = getRandomHexColor();
+        boxesDiv.appendChild(box);
+
+        initialBoxSize += boxSizeIncrement;
+    }
+}
+
+function destroyBoxes() {
+    boxesDiv.innerHTML = "";
+}
