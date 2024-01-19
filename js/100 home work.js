@@ -1027,3 +1027,27 @@ function destroyBoxes() {
   boxesDiv.innerHTML = "";
 }
 //? =====================================================================
+const categories = document.querySelector('#categories');
+const items = categories.querySelectorAll('.item');
+console.log(`Number of categories: ${items.length}`);
+
+items.forEach(category => {
+  const titleElement = category.querySelector('h2');
+  const title = titleElement.textContent;
+  const count = category.querySelectorAll('li').length;
+
+  console.log(`Category: ${title}`);
+  console.log(`Number of categories: ${count}`);
+
+  titleElement.classList.add('category-title');
+  titleElement.style.borderRadius = '8px';
+  titleElement.style.background = '#F6F6FE';
+
+  const subcategories = category.querySelectorAll('li');
+
+  subcategories.forEach(subcategory => {
+    subcategory.classList.add('subcategory');
+    subcategory.style.borderRadius = '4px';
+    subcategory.style.border = '1px solid #808080';
+  });
+});
