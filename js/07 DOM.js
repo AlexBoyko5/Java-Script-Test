@@ -607,192 +607,223 @@ function getRandomHexColor() {
 
 
 //!====================== TASK#6 =============================
+//&===================== Мой вариант===========================
+//&= СТИЛИ НЕ ПОДТЯГИВАЮТСЯ- нужно проверить
+// const inputElement = document.querySelector('input');
+// const createButton = document.querySelector('[data-create]');
+// const destroyButton = document.querySelector('[data-destroy]');
+// const boxesDiv = document.getElementById('boxes');
 
+// createButton.addEventListener('click', createBoxes);
+// destroyButton.addEventListener('click', destroyBoxes);
 
-// Отримуємо посилання на елементи DOM
-const inputElement = document.querySelector('input');
-const createButton = document.querySelector('[data-create]');
-const destroyButton = document.querySelector('[data-destroy]');
-const boxesDiv = document.getElementById('boxes');
+// function createBoxes() {
+//     const numberOfBoxes = inputElement.value;
+//     if (numberOfBoxes < 1 || numberOfBoxes > 100) {
+//         alert("Number of elements must be from 1 to 100");
+//         return;
+//     }
+//     destroyBoxes();
+//     const boxesArray = createBoxesArray(numberOfBoxes);
+//     boxesDiv.append(...boxesArray);
+//     inputElement.value = '';
+// }
 
-// Додаємо слухач подій на кнопку "Create"
-createButton.addEventListener('click', createBoxes);
+// function createBoxesArray(numberOfBoxes) {
+//     const boxesArray = [];
+//     let size = 30;
+//     for (let i = 0; i < numberOfBoxes; i++) {
+//         const box = document.createElement('div');
+//         box.style.width = `${size}px`;
+//         box.style.height = `${size}px`;
+//         box.style.backgroundColor = getRandomHexColor();
+//         size += 10;
 
-// Додаємо слухач подій на кнопку "Destroy"
-destroyButton.addEventListener('click', destroyBoxes);
+//         box.style.display = 'flex';
+//         box.style.alignItems = 'flex-start';
+//         box.style.gap = '16px';
+//         box.style.borderRadius = '8px';
 
-// Функція для створення блоків
-function createBoxes() {
-    // Отримуємо кількість блоків, яку ввів користувач
-    const numberOfBoxes = inputElement.value;
+//         boxesArray.push(box);
+//     }
+//     return boxesArray;
+// }
+// function destroyBoxes() {
+//     boxesDiv.innerHTML = '';
+// }
 
-    // Провіряємо, чи кількість в межах діапазону 1-100
-    if (numberOfBoxes < 1 || numberOfBoxes > 100) {
-        alert('Please enter a number between 1 and 100.');
-        return;
-    }
+// function getRandomHexColor() {
+//     return `#${Math.floor(Math.random() * 16777215)
+//         .toString(16)
+//         .padStart(6, 0)}`;
+// }
 
-    // Очищаємо div#boxes перед створенням нових блоків
-    destroyBoxes();
+// controlsDiv.style.display = 'flex';
+// controlsDiv.style.padding = '32px';
+// controlsDiv.style.alignItems = 'flex-start';
+// controlsDiv.style.gap = '16px';
+// controlsDiv.style.borderRadius = '8px';
+// controlsDiv.style.background = '#F6F6FE';
 
-    // Створюємо масив блоків та додаємо їх до div#boxes
-    const boxesArray = createBoxesArray(numberOfBoxes);
-    boxesDiv.append(...boxesArray);
+// inputElement.style.display = 'flex';
+// inputElement.style.padding = '8px 72px';
+// inputElement.style.flexDirection = 'column';
+// inputElement.style.justifyContent = 'center';
+// inputElement.style.alignItems = 'center';
+// inputElement.style.gap = '10px';
+// inputElement.style.borderRadius = '8px';
+// inputElement.style.border = '1px solid #808080';
 
-    // Очищаємо значення в input
-    inputElement.value = '';
-}
+// createButton.style.display = 'flex';
+// createButton.style.width = '120px';
+// createButton.style.padding = '8px 16px';
+// createButton.style.justifyContent = 'center';
+// createButton.style.alignItems = 'center';
+// createButton.style.gap = '10px';
+// createButton.style.borderRadius = '8px';
+// createButton.style.background = '#4E75FF';
+// createButton.style.color = '#FFF';
 
-// Функція для створення масиву блоків
-function createBoxesArray(numberOfBoxes) {
-    const boxesArray = [];
+// destroyButton.style.display = 'flex';
+// destroyButton.style.width = '120px';
+// destroyButton.style.padding = '8px 16px';
+// destroyButton.style.justifyContent = 'center';
+// destroyButton.style.alignItems = 'center';
+// destroyButton.style.gap = '10px';
+// destroyButton.style.borderRadius = '8px';
+// destroyButton.style.background = '#FF4E4E';
+// destroyButton.style.color = '#FFF';
 
-    // Створюємо блоки та додаємо їх до масиву
-    let size = 30;
-    for (let i = 0; i < numberOfBoxes; i++) {
-        const box = document.createElement('div');
-        box.style.width = `${size}px`;
-        box.style.height = `${size}px`;
-        box.style.backgroundColor = getRandomHexColor();
-        size += 10;
+// boxesDiv.style.display = 'flex';
+// boxesDiv.style.width = '486px';
+// boxesDiv.style.padding = '32px';
+// boxesDiv.style.flexDirection = 'row';
+// boxesDiv.style.alignItems = 'flex-start';
+// boxesDiv.style.gap = '10px';
+// boxesDiv.style.borderRadius = '8px';
+// boxesDiv.style.background = '#f6f6fe';
+//&===================== Вариант 1=============================
+// // Отримуємо посилання на елементи DOM
+// const inputElement = document.querySelector('input');
+// const createButton = document.querySelector('[data-create]');
+// const destroyButton = document.querySelector('[data-destroy]');
+// const boxesDiv = document.getElementById('boxes');
 
-        boxesArray.push(box);
-    }
+// // Додаємо слухач подій на кнопку "Create"
+// createButton.addEventListener('click', createBoxes);
 
-    return boxesArray;
-}
+// // Додаємо слухач подій на кнопку "Destroy"
+// destroyButton.addEventListener('click', destroyBoxes);
 
-// Функція для очищення div#boxes
-function destroyBoxes() {
-    boxesDiv.innerHTML = '';
-}
+// // Функція для створення блоків
+// function createBoxes() {
+//     // Отримуємо кількість блоків, яку ввів користувач
+//     const numberOfBoxes = inputElement.value;
 
-// Функція для отримання випадкового кольору
-function getRandomHexColor() {
-    return `#${Math.floor(Math.random() * 16777215)
-        .toString(16)
-        .padStart(6, '0')}`;
-}
+//     // Провіряємо, чи кількість в межах діапазону 1-100
+//     if (numberOfBoxes < 1 || numberOfBoxes > 100) {
+//         alert('Please enter a number between 1 and 100.');
+//         return;
+//     }
+
+//     // Очищаємо div#boxes перед створенням нових блоків
+//     destroyBoxes();
+
+//     // Створюємо масив блоків та додаємо їх до div#boxes
+//     const boxesArray = createBoxesArray(numberOfBoxes);
+//     boxesDiv.append(...boxesArray);
+
+//     // Очищаємо значення в input
+//     inputElement.value = '';
+// }
+
+// // Функція для створення масиву блоків
+// function createBoxesArray(numberOfBoxes) {
+//     const boxesArray = [];
+
+//     // Створюємо блоки та додаємо їх до масиву
+//     let size = 30;
+//     for (let i = 0; i < numberOfBoxes; i++) {
+//         const box = document.createElement('div');
+//         box.style.width = `${size}px`;
+//         box.style.height = `${size}px`;
+//         box.style.backgroundColor = getRandomHexColor();
+//         size += 10;
+
+//         boxesArray.push(box);
+//     }
+
+//     return boxesArray;
+// }
+
+// // Функція для очищення div#boxes
+// function destroyBoxes() {
+//     boxesDiv.innerHTML = '';
+// }
+
+// // Функція для отримання випадкового кольору
+// function getRandomHexColor() {
+//     return `#${Math.floor(Math.random() * 16777215)
+//         .toString(16)
+//         .padStart(6, '0')}`;
+// }
 
 
 //&===================== Variannt 2===========================
-// Отримуємо елементи з DOM
-const input = document.querySelector('input');
-const createButton = document.querySelector('[data-create]');
-const destroyButton = document.querySelector('[data-destroy]');
-const boxesContainer = document.querySelector('#boxes');
+// // Отримуємо елементи з DOM
+// const input = document.querySelector('input');
+// const createButton = document.querySelector('[data-create]');
+// const destroyButton = document.querySelector('[data-destroy]');
+// const boxesContainer = document.querySelector('#boxes');
 
-// Додаємо обробник події click до кнопки Create
-createButton.addEventListener('click', () => {
-    // Провалідовуємо значення в input
-    const amount = Number(input.value);
-    if (amount >= 1 && amount <= 100) {
-        // Викликаємо функцію createBoxes() з вказаною кількістю елементів для рендеру
-        createBoxes(amount);
-        // Очищаємо значення в input
-        input.value = '';
-    }
-});
+// // Додаємо обробник події click до кнопки Create
+// createButton.addEventListener('click', () => {
+//     // Провалідовуємо значення в input
+//     const amount = Number(input.value);
+//     if (amount >= 1 && amount <= 100) {
+//         // Викликаємо функцію createBoxes() з вказаною кількістю елементів для рендеру
+//         createBoxes(amount);
+//         // Очищаємо значення в input
+//         input.value = '';
+//     }
+// });
 
-// Додаємо обробник події click до кнопки Destroy
-destroyButton.addEventListener('click', () => {
-    // Очищаємо всі елементи в div#boxes
-    destroyBoxes();
-});
+// // Додаємо обробник події click до кнопки Destroy
+// destroyButton.addEventListener('click', () => {
+//     // Очищаємо всі елементи в div#boxes
+//     destroyBoxes();
+// });
 
-// Функція для рендеру елементів на сторінці
-function createBoxes(amount) {
-    // Розміри першого <div> елемента
-    let size = 30;
+// // Функція для рендеру елементів на сторінці
+// function createBoxes(amount) {
+//     // Розміри першого <div> елемента
+//     let size = 30;
 
-    for (let i = 0; i < amount; i++) {
-        // Створюємо новий <div> елемент
-        const box = document.createElement('div');
-        // Задаємо розміри та випадковий колір фону
-        box.style.width = `${size}px`;
-        box.style.height = `${size}px`;
-        box.style.backgroundColor = getRandomHexColor();
-        // Додаємо елемент у DOM дочірніми елементами для div#boxes
-        boxesContainer.appendChild(box);
-        // Збільшуємо розміри для наступного елемента
-        size += 10;
-    }
-}
+//     for (let i = 0; i < amount; i++) {
+//         // Створюємо новий <div> елемент
+//         const box = document.createElement('div');
+//         // Задаємо розміри та випадковий колір фону
+//         box.style.width = `${size}px`;
+//         box.style.height = `${size}px`;
+//         box.style.backgroundColor = getRandomHexColor();
+//         // Додаємо елемент у DOM дочірніми елементами для div#boxes
+//         boxesContainer.appendChild(box);
+//         // Збільшуємо розміри для наступного елемента
+//         size += 10;
+//     }
+// }
 
-// Функція для очищення всіх елементів в div#boxes
-function destroyBoxes() {
-    boxesContainer.innerHTML = '';
-}
+// // Функція для очищення всіх елементів в div#boxes
+// function destroyBoxes() {
+//     boxesContainer.innerHTML = '';
+// }
 
-// Функція для генерації випадкового кольору у hex-форматі
-function getRandomHexColor() {
-    return `#${Math.floor(Math.random() * 16777215)
-        .toString(16)
-        .padStart(6, 0)}`;
-}
+// // Функція для генерації випадкового кольору у hex-форматі
+// function getRandomHexColor() {
+//     return `#${Math.floor(Math.random() * 16777215)
+//         .toString(16)
+//         .padStart(6, 0)}`;
+// }
 
 
 //^=====================================================================================================
-//&================  task-05.js  ===================================================
-document.addEventListener("DOMContentLoaded", function () {
-    function getRandomHexColor() {
-        return `#${Math.floor(Math.random() * 16777215)
-            .toString(16)
-            .padStart(6, "0")}`;
-    }
-
-    const changeColorButton = document.querySelector(".change-color");
-    const widget = document.querySelector(".widget");
-    const colorSpan = document.querySelector(".color");
-
-    changeColorButton.addEventListener("click", () => {
-        const randomColor = getRandomHexColor();
-        document.body.style.backgroundColor = randomColor;
-        widget.style.backgroundColor = randomColor;
-        colorSpan.textContent = randomColor;
-    });
-});
-//&================  task-06.js  ===================================================
-
-function getRandomHexColor() {
-    return `#${Math.floor(Math.random() * 16777215)
-        .toString(16)
-        .padStart(6, 0)}`;
-}
-
-const userInput = document.querySelector("input");
-const createButton = document.querySelector("[data-create]");
-const destroyButton = document.querySelector("[data-destroy]");
-const boxesDiv = document.querySelector("#boxes");
-
-createButton.addEventListener("click", () => {
-    const amount = Number(userInput.value);
-    if (amount >= 1 && amount <= 100) {
-        createBoxes(amount);
-        userInput.value = "";
-    }
-});
-
-destroyButton.addEventListener("click", destroyBoxes);
-
-function createBoxes(amount) {
-    boxesDiv.innerHTML = "";
-
-    let initialBoxSize = 30;
-    let boxSizeIncrement = 10;
-    let size = 30;
-    for (let i = 0; i < amount; i++) {
-        const box = document.createElement("div");
-        box.classList.add("box");
-        box.style.width = `${initialBoxSize}px`;
-        box.style.height = `${initialBoxSize}px`;
-        box.style.backgroundColor = getRandomHexColor();
-        boxesDiv.appendChild(box);
-
-        initialBoxSize += boxSizeIncrement;
-    }
-}
-
-function destroyBoxes() {
-    boxesDiv.innerHTML = "";
-}
