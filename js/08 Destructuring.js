@@ -170,6 +170,12 @@ gallery.addEventListener('click', (event) => {
 
 //~==============Ось основні етапи "створення розмітки елемента галереї" в вашому коді:=======================
 
+// "Створення розмітки елемента галереї" - означає створення HTML - структури,
+
+//     яка відповідає вигляду кожного елемента у галереї зображень.
+// В нашому випадку, кожен елемент галереї представлений в коді HTML - розмітки
+//  інструкціями JavaScript, які створюють відповідні теги та атрибути.
+
 // Створення елементів:
 // listItem: <li> - елемент списку, який представляє одне зображення у галереї.
 // imageLink: <a> - посилання, яке оточує зображення та вказує на велике зображення.
@@ -234,7 +240,7 @@ function createGalleryItem({ preview, original, description }) {
 
     return listItem;
 }
-
+//Використовуємо функцію createGalleryItem у циклі forEach для створення розмітки для кожного елемента галереї
 // Створюємо елементи галереї та додаємо їх до ul.gallery
 images.forEach((image) => {
     const galleryItem = createGalleryItem(image);
@@ -266,89 +272,34 @@ images.forEach((image) => {
     gallery.appendChild(listItem);  //Завершена <li> додається до галереї (<ul class="gallery">).
 });
 
-//!======= мінімальна стилізація 
-/* styles.css */
-
-body {
-    margin: 0;
-    font - family: Arial, sans - serif;
-}
-
-.gallery {
-    list - style: none;
-    padding: 0;
-    display: flex;
-    flex - wrap: wrap;
-}
-
-.gallery - item {
-    margin: 5px;
-}
-
-.gallery - link {
-    text - decoration: none;
-}
-
-.gallery - image {
-    width: 100 %;
-    height: auto;
-    border: 2px solid #fff;
-    border - radius: 5px;
-    transition: transform 0.2s ease -in -out;
-}
-
-.gallery - image:hover {
-    transform: scale(1.1);
-}
-
 
 //!======= додай функціонал прослуховування кліка по елементах галереї та отримання посилання на велике зображення при кліку.
 
-// У цьому коді:
+//^ Опис дій: У цьому коді:
 
-// Знаходимо елемент галереї < ul > за його класом.gallery.
-// Ітеруємося по масиву images та створюємо HTML - розмітку для кожного елемента галереї.
-// Додаємо обробник подій для галереї, який слухає кліки.
-//     Перевіряємо, чи клікнуто саме на зображення(тег < img >).
-// Якщо так, отримуємо посилання на велике зображення з атрибуту data - source та виводимо його у консоль.
+// Додаємо обробник подій для галереї(ul.gallery):
+// Код слідкує за подією кліку на галереї.
+// Заборона стандартної поведінки:
+// event.preventDefault(); відміняє стандартну поведінку браузера для заборони переходу за посиланням.
+// Отримання цільового елемента:
+// const target = event.target; отримуємо елемент, на якому відбувся клік.
+//     Перевірка, чи це зображення(IMG):
+// if (target.nodeName === 'IMG') перевіряє, чи цільовий елемент – зображення.
+// Отримання посилання на велике зображення:
+// const largeImageUrl = target.getAttribute('data-source'); отримуємо значення атрибуту data - source(посилання на велике зображення).
+// Вивід посилання у консоль:
+// console.log('Посилання на велике зображення:', largeImageUrl); виводить посилання на велике зображення у консоль.
 
-// Функція для створення розмітки елемента галереї
-function createGalleryItem({ preview, original, description }) {
-    const listItem = document.createElement('li');
-    listItem.classList.add('gallery-item');
+//^ створюємо обробник подій
 
-    const imageLink = document.createElement('a');
-    imageLink.classList.add('gallery-link');
-    imageLink.href = original;
-    imageLink.setAttribute('target', '_blank');
-    imageLink.setAttribute('rel', 'noopener noreferrer');
-
-    const imageView = document.createElement('img');
-    imageView.classList.add('gallery-image');
-    imageView.src = preview;
-    imageView.alt = description;
-    imageView.setAttribute('data-source', original);
-
-    imageLink.appendChild(imageView);
-    listItem.appendChild(imageLink);
-
-    return listItem;
-}
-
-// Створюємо елементи галереї та додаємо їх до ul.gallery
-images.forEach((image) => {
-    const galleryItem = createGalleryItem(image);
-    gallery.appendChild(galleryItem);
-});
-
-// Додаємо обробник подій для відкриття модального вікна при кліку
+// Додаємо обробник подій для відкриття модального вікна при кліку.
 gallery.addEventListener('click', (event) => {//Додаємо обробник подій для галереї, який слухає кліки.
-    event.preventDefault();
+    event.preventDefault(); // Заборона стандартної поведінки посилань
 
-    const target = event.target;  // Отримуємо елемент, на який клікнули
+    const target = event.target;  // Отримання цільового елемента, на якому спрацював клік
 
     if (target.nodeName === 'IMG') {// Перевіряємо, чи клікнули саме на зображення
-        const largeImageUrl = target.getAttribute('data-source');// Отримуємо посилання на велике зображення
+        const largeImageUrl = target.getAttribute('data-source');// Отримуємо посилання на велике зображення з атрибуту data-source
         console.log('Посилання на велике зображення:', largeImageUrl);
     }// Якщо так, отримуємо посилання на велике зображення з атрибуту data - source та виводимо його у консоль.
 
