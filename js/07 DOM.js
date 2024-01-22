@@ -270,7 +270,7 @@
 //     },
 // ];
 
-
+//const tempContainer = document.createDocumentFragment();//tempContainer (DocumentFragment) призначений для збору елементів і потім додавання їх одночасно до DOM.
 // images.forEach(imageData => { // Цикл по кожному об'єкту в масиві images
 //     const listItem = document.createElement('li'); // Створюємо новий елемент li
 //     const imageElement = document.createElement('img'); // Створюємо новий елемент img
@@ -278,8 +278,17 @@
 //     imageElement.alt = imageData.alt;// Додаємо атрибути src та alt до зображення з даних об'єкта
 //     imageElement.classList.add('gallery-image'); // Додаємо клас 'gallery-image' до зображення
 //     listItem.appendChild(imageElement); // Додаємо зображення в елемент li
-//     gallery.appendChild(listItem); // Додаємо зображення в елемент ul
+//     tempContainer.appendChild(listItem); // add listItem to tempContainer//
 // });
+//    gallery.appendChild(listItem); // Додаємо зображення в елемент ul.
+//     Зміна тут: цей рядок(gallery.appendChild(listItem)) повинен бути за межами циклу
+
+// Була помилка:(виправив)
+//Критичні помилки:
+// Неправильне використання DocumentFragment: tempContainer(DocumentFragment) призначений для збору елементів і потім додавання їх одночасно до DOM.Однак у вашому рішенні елементи додаються окремо до gallery всередині циклу, і tempContainer додається потім, не використовуючись.Це призводить до відсутності переваг продуктивності і неправильного використання DocumentFragment.
+//     Покращення:
+// Використання DocumentFragment: Щоб покращити ефективність операцій з DOM, ви можете додавати кожний новий listItem до tempContainer, а не безпосередньо до gallery.Після закінчення циклу, додайте tempContainer до gallery, щоб вставити всі елементи одним разом.Це мінімізує зміни макету і переклади і є правильним підходом при використанні DocumentFragment.
+// Неправильне розміщення gallery.appendChild(tempContainer): Цей рядок повинен бути розміщений за межами циклу, після додавання всіх елементів до tempContainer.Він зараз є зайвим і в неправильному контексті
 
 // gallery.style.listStyle = 'none';
 // gallery.style.display = 'flex';
