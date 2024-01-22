@@ -213,6 +213,8 @@ images.forEach((image) => {
 });
 
 //!======= мінімальна стилізація 
+/* styles.css */
+
 body {
     margin: 0;
     font - family: Arial, sans - serif;
@@ -244,6 +246,7 @@ body {
 .gallery - image:hover {
     transform: scale(1.1);
 }
+
 
 //!======= додай функціонал прослуховування кліка по елементах галереї та отримання посилання на велике зображення при кліку.
 
