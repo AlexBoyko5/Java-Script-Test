@@ -369,17 +369,28 @@ gallery.addEventListener('click', (event) => {
         const largeImageUrl = target.getAttribute('data-source');
 
         // Відкриваємо модальне вікно з великим зображенням
-        const instance = basicLightbox.create(`
-      <img src="${largeImageUrl}" alt="${target.alt}" width="800" height="600">
-    `);
+        // У цьому випадку використовується іменований екземпляр змінної modal.
+        // Функція create є методом об'єкта basicLightbox, тобто викликається через об'єкт basicLightbox.
 
-        instance.show();
+        //! basicLightbox.create - виклик методу create бібліотеки basicLightbox.
+        //Метод create приймає рядок HTML - коду або DOM - елемент та створює з нього новий екземпляр модального вікна.
+
+        const modal = basicLightbox.create(`
+            <img src="${largeImageUrl}" alt="${target.alt}">
+        `);
+        //(<img src=.....>) Це рядок HTML - коду, який визначає зображення(<img>) для відображення в модальному вікні
+        // використовуємо шаблонні рядки (template literals) з backticks (`) для вставки значень
+        // JavaScript-змінних(${ largeImageUrl }, ${ target.alt }) прямо в середину рядка.
+        // інформація для (${ largeImageUrl }, ${ target.alt }) береться з об'єкта image, який є елементом масиву images.
+
+
+        modal.show();
     }
 });
 
 //!======= Для відображення великого зображення в модальному вікні та закриття його після натискання клавіші "Escape", використаємо бібліотеку basicLightbox.
 
-
+////&======= Вариант 1 =====================================================================
 // Функція для створення розмітки елемента галереї
 function createGalleryItem({ preview, original, description }) {
     const listItem = document.createElement('li');
@@ -441,3 +452,37 @@ gallery.addEventListener('click', (event) => {
         instance.show();
     }
 });
+////&======= Вариант 2 =====================================================================
+let modal;
+
+// Додаємо обробник подій для відкриття модального вікна при кліку в галереї
+gallery.addEventListener('click', (event) => {
+    event.preventDefault();
+    const target = event.target;
+    if (target.nodeName === 'IMG') {
+        const largeImageUrl = target.getAttribute('data-source');
+
+        // Створюємо модальне вікно з великим зображенням
+        modal = basicLightbox.create(`
+            <img src="${largeImageUrl}" alt="${target.alt}">
+        `);
+
+        // Відкриваємо модальне вікно
+        modal.show();
+
+        // Додаємо подію для закриття модального вікна при натисканні клавіші Escape
+        window.addEventListener('keydown', handleKeyDown);
+    }
+});
+
+// Функція обробки події натискання клавіші
+function handleKeyDown(event) {
+    if (event.code === 'Escape') {
+        // Закриваємо модальне вікно та видаляємо подію
+        modal.close();
+        window.removeEventListener('keydown', handleKeyDown);
+    }
+} // Цей код додає подію 'keydown' до об'єкта window тільки після відкриття 
+// модального вікна, і при закритті видаляє цю подію
+// Функція handleKeyDown перевіряє, чи натискана клавіша Escape,
+// і закриває модальне вікно, якщо так.
