@@ -94,6 +94,10 @@ const images = [
         description: "Lighthouse Coast Sea",
     },
 ];
+
+// Оголошуємо змінну modal на рівні видимості скрипта.для подальш використ в модал викни та закриття Esc
+let modal;
+
 // Ітеруємося по масиву та створюємо елементи <li> зображень
 // main.js
 
@@ -329,7 +333,7 @@ gallery.addEventListener('click', (event) => {//Додаємо обробник 
     </html>
 
 //!======= при кліку по елементу галереї відкривалось модальне вікно підключеної бібліотеки
-
+////&======= Вариант 1 =====================================================================
 // Функція для створення розмітки елемента галереї
 function createGalleryItem({ preview, original, description }) {
     const listItem = document.createElement('li');
@@ -375,7 +379,7 @@ gallery.addEventListener('click', (event) => {
         //! basicLightbox.create - виклик методу create бібліотеки basicLightbox.
         //Метод create приймає рядок HTML - коду або DOM - елемент та створює з нього новий екземпляр модального вікна.
 
-        const modal = basicLightbox.create(`
+        modal = basicLightbox.create(`
             <img src="${largeImageUrl}" alt="${target.alt}">
         `);
         //(<img src=.....>) Це рядок HTML - коду, який визначає зображення(<img>) для відображення в модальному вікні
@@ -387,6 +391,7 @@ gallery.addEventListener('click', (event) => {
         modal.show();
     }
 });
+////&======= Вариант 2 =====================================================================
 
 //!======= Для відображення великого зображення в модальному вікні та закриття його після натискання клавіші "Escape", використаємо бібліотеку basicLightbox.
 
@@ -430,6 +435,8 @@ gallery.addEventListener('click', (event) => {
         const largeImageUrl = target.getAttribute('data-source');
 
         // Відкриваємо модальне вікно з великим зображенням та обробником закриття
+
+        // basicLightbox.create - створює новий екземпляр модального вікна.
         const instance = basicLightbox.create(`
       <img src="${largeImageUrl}" alt="${target.alt}" width="800" height="600">
     `, {
@@ -453,36 +460,37 @@ gallery.addEventListener('click', (event) => {
     }
 });
 ////&======= Вариант 2 =====================================================================
-let modal;
+
 
 // Додаємо обробник подій для відкриття модального вікна при кліку в галереї
+
+// Adding an event handler to open a modal window on gallery click (ul.gallery))
 gallery.addEventListener('click', (event) => {
     event.preventDefault();
     const target = event.target;
-    if (target.nodeName === 'IMG') {
+    if (target.tagName === 'IMG') {
         const largeImageUrl = target.getAttribute('data-source');
 
-        // Створюємо модальне вікно з великим зображенням
-        modal = basicLightbox.create(`
-            <img src="${largeImageUrl}" alt="${target.alt}">
+        //Creating a modal window with a large image
+        const modal = basicLightbox.create(`
+            <img src="${largeImageUrl}" alt="${target.alt}" width="800" height="600">
         `);
 
-        // Відкриваємо модальне вікно
         modal.show();
 
-        // Додаємо подію для закриття модального вікна при натисканні клавіші Escape
+        //Closing the modal window upon pressing the Escape
         window.addEventListener('keydown', handleKeyDown);
+
+
+        function handleKeyDown(event) {
+            if (event.code === 'Escape') {
+                modal.close();
+                window.removeEventListener('keydown', handleKeyDown)
+            }
+        }
     }
 });
-
-// Функція обробки події натискання клавіші
-function handleKeyDown(event) {
-    if (event.code === 'Escape') {
-        // Закриваємо модальне вікно та видаляємо подію
-        modal.close();
-        window.removeEventListener('keydown', handleKeyDown);
-    }
-} // Цей код додає подію 'keydown' до об'єкта window тільки після відкриття 
+// Цей код додає подію 'keydown' до об'єкта window тільки після відкриття
 // модального вікна, і при закритті видаляє цю подію
 // Функція handleKeyDown перевіряє, чи натискана клавіша Escape,
 // і закриває модальне вікно, якщо так.
