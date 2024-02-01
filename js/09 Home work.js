@@ -98,3 +98,151 @@ new SimpleLightbox('.gallery a', {
     captionPosition: 'bottom',
 });
 gallery.on('show.simplelightbox');
+
+//~=========================================================
+
+ЗАДАНИЕ №2 вариант 1
+
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.querySelector('form');
+    const emailInput = document.querySelector('input[name="email"]');
+    const messageInput = document.querySelector('textarea[name="message"]');
+
+    // Завдання 2: Використовуючи делегування, відстежуємо подію input
+    form.addEventListener('input', function (event) {
+        if (event.target === emailInput || event.target === messageInput) {
+            // Зберігаємо значення полів у локальне сховище
+            const feedbackState = {
+                email: emailInput.value,
+                message: messageInput.value
+            };
+            localStorage.setItem('feedback-form-state', JSON.stringify(feedbackState));
+        }
+    });
+
+    // Завдання 3: Перевіряємо стан сховища при завантаженні сторінки
+    const storedState = localStorage.getItem('feedback-form-state');
+    if (storedState) {
+        const parsedState = JSON.parse(storedState);
+        emailInput.value = parsedState.email;
+        messageInput.value = parsedState.message;
+    }
+
+    // Завдання 4: Під час сабміту форми очищаємо сховище та поля форми
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const feedbackState = {
+            email: emailInput.value,
+            message: messageInput.value
+        };
+
+        // Очищаємо сховище
+        localStorage.removeItem('feedback-form-state');
+
+        // Очищаємо поля форми
+        emailInput.value = '';
+        messageInput.value = '';
+
+        // Виводимо у консоль об'єкт з полями email, message та їхніми поточними значеннями
+        console.log('Feedback form submitted:', feedbackState);
+    });
+});
+
+//~=========================================================
+
+ЗАДАНИЕ №2 вариант 2
+// Збереження значень полів у локальне сховище при вводі
+// Ваші поля вводу
+const emailInput = document.getElementById('email');
+const messageInput = document.getElementById('message');
+
+// Збереження значень у локальному сховищі при вводі
+emailInput.addEventListener('input', () => {
+    localStorage.setItem('feedback-form-state', JSON.stringify({
+        email: emailInput.value,
+        message: messageInput.value,
+    }));
+});
+
+messageInput.addEventListener('input', () => {
+    localStorage.setItem('feedback-form-state', JSON.stringify({
+        email: emailInput.value,
+        message: messageInput.value,
+    }));
+});
+//Заповнення полів форми зі збережених даних при завантаженні сторінки
+// Перевірка наявності збережених даних
+const savedState = localStorage.getItem('feedback-form-state');
+if (savedState) {
+    const { email, message } = JSON.parse(savedState);
+    emailInput.value = email;
+    messageInput.value = message;
+}
+//Очищення сховища та полів форми при сабміті:
+// Сабміт форми
+const form = document.getElementById('feedback-form');
+form.addEventListener('submit', (event) => {
+    event.preventDefault(); // Заборонити перезавантаження сторінки
+
+    // Очистити локальне сховище
+    localStorage.removeItem('feedback-form-state');
+
+    // Очистити поля форми
+    emailInput.value = '';
+    messageInput.value = '';
+
+    // Вивести об'єкт з полями email та message у консоль
+    console.log({
+        email: emailInput.value,
+        message: messageInput.value,
+    });
+});
+//~========= backup HTML=========================================
+
+// < !DOCTYPE html >
+//     <html lang="en">
+
+//         <head>
+//             <meta charset="UTF-8" />
+//             <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+//             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+//             <title>Vanilla App Template</title>
+//             <link rel="stylesheet" href="./css/styles.css" />
+//             <link rel="stylesheet" href="./css/1-gallery.css" />
+//             <link rel="stylesheet" href="./css/2-form.css" />
+
+//         </head>
+
+//         <body>
+//             <object type=" text/html" data="./1-gallery.html" width="100%"></object> 
+//             <object type="text/html" data="./2-form.html" width="100%"></object>
+
+//             <iframe src="./1-gallery.html"></iframe>
+//             <iframe src="./2-form.html"></iframe>
+
+//             <load src="./1-gallery.html"></load>
+//             <load src="./2-form.html"></load>
+
+
+//             <ul class="gallery"></ul>
+
+
+//             <script type="module" src="./js/1-gallery.js"></script>
+//             <script type="module" src="./js/2-form.js"></script>
+//         </body>
+
+//     </html>
+//~=============================
+
+{/* <form class="feedback-form" autocomplete="off">
+    <label>
+        Email
+        <input type="email" name="email" autofocus />
+    </label>
+    <label>
+        Message
+        <textarea name="message" rows="8"></textarea>
+    </label>
+    <button type="submit">Submit</button>
+</form> */}
+
