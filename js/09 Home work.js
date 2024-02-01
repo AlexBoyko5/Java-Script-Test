@@ -246,3 +246,9 @@ form.addEventListener('submit', (event) => {
     <button type="submit">Submit</button>
 </form> */}
 
+const lightbox = new SimpleLightbox('.gallery a', {
+    captions: true,
+    captionDelay: 250,
+    captionPosition: 'bottom',
+    captionsData: 'data-caption',
+});
