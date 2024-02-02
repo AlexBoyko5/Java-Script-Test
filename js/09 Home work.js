@@ -1,3 +1,8 @@
+ЗАДАНИЕ №1 вариант 1
+
+// Сonnect the CSS code of the SimpleLightbox library to our code.
+import SimpleLightbox from "simplelightbox";
+import "simplelightbox/dist/simple-lightbox.min.css";
 const gallery = document.querySelector('.gallery')
 
 const images = [
@@ -66,38 +71,81 @@ const images = [
     },
 ];
 
-// Сonnect the CSS code of the SimpleLightbox library to our code.
-import SimpleLightbox from "simplelightbox";
-import "simplelightbox/dist/simple-lightbox.min.css";
-
-// Creating gallery items and adding them to the ul.gallery.
 
 images.forEach((image) => {
     const listItem = document.createElement('li');
     listItem.classList.add('gallery-item');
 
     const imageLink = document.createElement('a');
-    imageLink.classList.add('large-image.jpg');
+    imageLink.classList.add('gallery-link');
     imageLink.href = image.original;
 
     const imageView = document.createElement('img');
     imageView.classList.add('gallery-image');
-    imageView.src = small - image.jpg;
+    imageView.src = image.preview;
     imageView.alt = image.description;
 
     imageLink.appendChild(imageView);
     listItem.appendChild(imageLink);
-
     gallery.appendChild(listItem);
 });
 
-new SimpleLightbox('.gallery a', {
+const lightbox = new SimpleLightbox('.gallery a', {
     captions: true,
     captionDelay: 250,
-    captionData: 'description',
     captionPosition: 'bottom',
+    captionType: 'attr',
+    captionData: 'alt',
 });
-gallery.on('show.simplelightbox');
+
+ЗАДАНИЕ №1 вариант 2
+
+const images = [{},] массив изображений а далее:
+
+    const markup = images.map((image) => `
+  <li class="gallery-item">
+    <a class="gallery-link" href="${image.original}">
+      <img class="gallery-image" src="${image.preview}" alt="${image.description}" />
+    </a>
+  </li>
+`).join('');
+gallery.innerHTML = markup;
+const lightbox = new SimpleLightbox('.gallery a', {
+    captions: true,
+    captionDelay: 250,
+    captionPosition: 'bottom',
+    captionType: 'attr',
+    captionData: 'alt',
+});
+//^================ Вариант Саши ==================
+
+const markup = images
+    .map(
+        image => `<li class="gallery-item">
+    <a class="gallery-link" href="${image.original}">
+        <img 
+            class="gallery-image" 
+            src="${image.preview}" 
+            alt="${image.description}" 
+            />
+    </a>
+</li>`
+    )
+    .join('');
+
+gallery.innerHTML = markup;
+
+const options = {
+    captions: true,
+    captionSelector: 'img',
+    captionType: 'attr',
+    captionsData: 'alt',
+    captionPosition: 'bottom',
+    animation: 250,
+};
+
+const lightbox = new SimpleLightbox('.gallery a', options);
+lightbox.on('show.simplelightbox');
 
 //~=========================================================
 
