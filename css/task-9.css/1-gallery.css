@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+}
+
+.li {
+    list-style: none;
+}
+
+.gallery {
+    display: flex;
+    width: 1440px;
+    height: 696px;
+    padding: 24px 156px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 24px;
+    background: #fff;
+}
+
+.gallery-item {
+    list-style-type: none;
+    width: calc((100% - 48) / 3);
+    height: 200px;
+    flex-shrink: 0;
+}
+
+.gallery-item:hover {
+    transform: scale(1.04);
+}
+
+.gallery-image {
+    width: 360px;
+    height: 200px;
+    flex-shrink: 0;
+    background: url(<path-to-image>), lightgray 0px -30px / 100% 180% no-repeat;
+}

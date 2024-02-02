@@ -964,90 +964,104 @@
 // });
 //~ ======================== //~ ======================== //~ ========================
 //&================  task-05.js  ===================================================
-document.addEventListener("DOMContentLoaded", function () {
-  function getRandomHexColor() {
-    return `#${Math.floor(Math.random() * 16777215)
-      .toString(16)
-      .padStart(6, "0")}`;
-  }
+// document.addEventListener("DOMContentLoaded", function () {
+//   function getRandomHexColor() {
+//     return `#${Math.floor(Math.random() * 16777215)
+//       .toString(16)
+//       .padStart(6, "0")}`;
+//   }
 
-  const changeColorButton = document.querySelector(".change-color");
-  const widget = document.querySelector(".widget");
-  const colorSpan = document.querySelector(".color");
+//   const changeColorButton = document.querySelector(".change-color");
+//   const widget = document.querySelector(".widget");
+//   const colorSpan = document.querySelector(".color");
 
-  changeColorButton.addEventListener("click", () => {
-    const randomColor = getRandomHexColor();
-    document.body.style.backgroundColor = randomColor;
-    widget.style.backgroundColor = randomColor;
-    colorSpan.textContent = randomColor;
-  });
+//   changeColorButton.addEventListener("click", () => {
+//     const randomColor = getRandomHexColor();
+//     document.body.style.backgroundColor = randomColor;
+//     widget.style.backgroundColor = randomColor;
+//     colorSpan.textContent = randomColor;
+//   });
+// });
+// //&================  task-06.js  ===================================================
+
+// function getRandomHexColor() {
+//   return `#${Math.floor(Math.random() * 16777215)
+//     .toString(16)
+//     .padStart(6, 0)}`;
+// }
+
+// const userInput = document.querySelector("input");
+// const createButton = document.querySelector("[data-create]");
+// const destroyButton = document.querySelector("[data-destroy]");
+// const boxesDiv = document.querySelector("#boxes");
+
+// createButton.addEventListener("click", () => {
+//   const amount = Number(userInput.value);
+//   if (amount >= 1 && amount <= 100) {
+//     createBoxes(amount);
+//     userInput.value = "";
+//   }
+// });
+
+// destroyButton.addEventListener("click", destroyBoxes);
+
+// function createBoxes(amount) {
+//   boxesDiv.innerHTML = "";
+
+//   let initialBoxSize = 30;
+//   let boxSizeIncrement = 10;
+//   let size = 30;
+//   for (let i = 0; i < amount; i++) {
+//     const box = document.createElement("div");
+//     box.classList.add("box");
+//     box.style.width = `${initialBoxSize}px`;
+//     box.style.height = `${initialBoxSize}px`;
+//     box.style.backgroundColor = getRandomHexColor();
+//     boxesDiv.appendChild(box);
+
+//     initialBoxSize += boxSizeIncrement;
+//   }
+// }
+
+// function destroyBoxes() {
+//   boxesDiv.innerHTML = "";
+// }
+// //? =====================================================================
+// const categories = document.querySelector('#categories');
+// const items = categories.querySelectorAll('.item');
+// console.log(`Number of categories: ${items.length}`);
+
+// items.forEach(category => {
+//   const titleElement = category.querySelector('h2');
+//   const title = titleElement.textContent;
+//   const count = category.querySelectorAll('li').length;
+
+//   console.log(`Category: ${title}`);
+//   console.log(`Number of categories: ${count}`);
+
+//   titleElement.classList.add('category-title');
+//   titleElement.style.borderRadius = '8px';
+//   titleElement.style.background = '#F6F6FE';
+
+//   const subcategories = category.querySelectorAll('li');
+
+//   subcategories.forEach(subcategory => {
+//     subcategory.classList.add('subcategory');
+//     subcategory.style.borderRadius = '4px';
+//     subcategory.style.border = '1px solid #808080';
+//   });
+// });
+
+const isSuccess = true;
+
+const promise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    if (isSuccess) {
+      resolve("Success! Value passed to resolve function");
+    } else {
+      reject("Error! Error passed to reject function");
+    }
+  }, 2000);
 });
-//&================  task-06.js  ===================================================
 
-function getRandomHexColor() {
-  return `#${Math.floor(Math.random() * 16777215)
-    .toString(16)
-    .padStart(6, 0)}`;
-}
-
-const userInput = document.querySelector("input");
-const createButton = document.querySelector("[data-create]");
-const destroyButton = document.querySelector("[data-destroy]");
-const boxesDiv = document.querySelector("#boxes");
-
-createButton.addEventListener("click", () => {
-  const amount = Number(userInput.value);
-  if (amount >= 1 && amount <= 100) {
-    createBoxes(amount);
-    userInput.value = "";
-  }
-});
-
-destroyButton.addEventListener("click", destroyBoxes);
-
-function createBoxes(amount) {
-  boxesDiv.innerHTML = "";
-
-  let initialBoxSize = 30;
-  let boxSizeIncrement = 10;
-  let size = 30;
-  for (let i = 0; i < amount; i++) {
-    const box = document.createElement("div");
-    box.classList.add("box");
-    box.style.width = `${initialBoxSize}px`;
-    box.style.height = `${initialBoxSize}px`;
-    box.style.backgroundColor = getRandomHexColor();
-    boxesDiv.appendChild(box);
-
-    initialBoxSize += boxSizeIncrement;
-  }
-}
-
-function destroyBoxes() {
-  boxesDiv.innerHTML = "";
-}
-//? =====================================================================
-const categories = document.querySelector('#categories');
-const items = categories.querySelectorAll('.item');
-console.log(`Number of categories: ${items.length}`);
-
-items.forEach(category => {
-  const titleElement = category.querySelector('h2');
-  const title = titleElement.textContent;
-  const count = category.querySelectorAll('li').length;
-
-  console.log(`Category: ${title}`);
-  console.log(`Number of categories: ${count}`);
-
-  titleElement.classList.add('category-title');
-  titleElement.style.borderRadius = '8px';
-  titleElement.style.background = '#F6F6FE';
-
-  const subcategories = category.querySelectorAll('li');
-
-  subcategories.forEach(subcategory => {
-    subcategory.classList.add('subcategory');
-    subcategory.style.borderRadius = '4px';
-    subcategory.style.border = '1px solid #808080';
-  });
-});
+console.log(promise); // Об'єкт промісу
